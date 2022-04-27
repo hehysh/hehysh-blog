@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="简介我们将看一下如何用Python编写运行一个传统的 Hello World 程序。通过它，你将学会如何编写、保存和运行Python程序。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第3章 最初的步骤">
+<meta property="og:url" content="http://example.com/posts/21130.html">
+<meta property="og:site_name" content="十贰的小窝">
+<meta property="og:description" content="简介我们将看一下如何用Python编写运行一个传统的 Hello World 程序。通过它，你将学会如何编写、保存和运行Python程序。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-26T12:22:57.000Z">
+<meta property="article:modified_time" content="2022-04-27T00:41:52.956Z">
+<meta property="article:author" content="十贰">
+<meta property="article:tag" content="十贰">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/posts/21130.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>第3章 最初的步骤 | 十贰的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">十贰的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sec-site">
+
+    <a href="/sec-site/" rel="section"><i class="fa fa-link fa-fw"></i>分站</a>
+
+  </li>
+        <li class="menu-item menu-item-book">
+
+    <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/21130.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/writer.jpeg">
+      <meta itemprop="name" content="十贰">
+      <meta itemprop="description" content="十贰的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十贰的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第3章 最初的步骤
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-26 12:22:57" itemprop="dateCreated datePublished" datetime="2022-04-26T12:22:57+00:00">2022-04-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-27 00:41:52" itemprop="dateModified" datetime="2022-04-27T00:41:52+00:00">2022-04-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">简易python教程</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>我们将看一下如何用Python编写运行一个传统的 <code>Hello World</code> 程序。通过它，你将学会如何编写、保存和运行Python程序。</p>
+<span id="more"></span>
+<p>有两种使用Python运行你的程序的方式——使用交互式的带提示符的解释器或使用源文件。我们将学习这两种方法。</p>
+<h2 id="使用带提示符的解释器"><a href="#使用带提示符的解释器" class="headerlink" title="使用带提示符的解释器"></a>使用带提示符的解释器</h2><p>在命令行的shell提示符下键入 <strong>python</strong> ，启动解释器。现在输入 <code>print &#39;Hello World&#39;</code> ，然后按Enter键。你应该可以看到输出的单词Hello World。</p>
+<p>对于Windows用户，只要你正确的设置了PATH变量，你应该可以从命令行启动解释器。或者你可以选择使用IDLE程序。IDLE是集成开发环境的缩写。点击开始-&gt;程序-&gt;Python 2.3-&gt;IDLE(Python GUI)。Linux用户也可以使用IDLE。</p>
+<p>注意， <code>&gt;&gt;&gt;</code> 是你键入Python语句的提示符。</p>
+<p><strong>例3.1 使用带提示符的Python解释器</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ python</span><br><span class="line">Python <span class="number">2.3</span><span class="number">.4</span> (<span class="comment">#1, Oct 26 2004, 16:42:40)</span></span><br><span class="line">[GCC <span class="number">3.4</span><span class="number">.2</span> <span class="number">20041017</span> (Red Hat <span class="number">3.4</span><span class="number">.2</span>-<span class="number">6.</span>fc3)] on linux2</span><br><span class="line"><span class="type">Type</span> <span class="string">&quot;help&quot;</span>, <span class="string">&quot;copyright&quot;</span>, <span class="string">&quot;credits&quot;</span> <span class="keyword">or</span> <span class="string">&quot;license&quot;</span> <span class="keyword">for</span> more information.</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span> <span class="string">&#x27;hello world&#x27;</span></span><br><span class="line">hello world</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注意，Python会在下一行立即给出你输出！你刚才键入的是一句Python 语句 。我们使用 <code>print</code> （不要惊讶）来打印你提供给它的值。这里，我们提供的是文本Hello World，它被迅速地打印在屏幕上。</p>
+<blockquote>
+<p><strong>如何退出Python提示符</strong></p>
+</blockquote>
+<blockquote>
+<p>如果你使用的是Linux&#x2F;BSD shell，那么按Ctrl-d退出提示符。如果是在Windows命令行中，则按Ctrl-z再按Enter。</p>
+</blockquote>
+<h2 id="挑选一个编辑器"><a href="#挑选一个编辑器" class="headerlink" title="挑选一个编辑器"></a>挑选一个编辑器</h2><p>在我们开始讲述以源文件方式编写Python程序之前，我们需要一个编辑器来写源文件。挑选一个编辑器确实是极其重要的。你挑选一个编辑器就如同你挑选一辆你将购买的轿车一样。一个好的编辑器会帮助你方便地编写Python程序，使你地编程旅程更加舒适，帮助你更加快捷安全地到达目的地（实现目标）。</p>
+<p>对于编辑器的基本要求之一是 <strong>语法加亮</strong> 功能，利用这一功能，你的Python程序的不同部分被标以不同的颜色，这样你可以更好 <strong>看清楚</strong> 你的程序，使它的运行显得形象化。</p>
+<p>如果你使用Windows，那么我建议你使用IDLE。IDLE具备语法加亮功能，还有许多其他的功能，比如允许你在IDLE中运行你的程序。特别值得注意的是： <strong>不要使用Notepad</strong> ——它是一个糟糕的选择，因为它没有语法加亮功能，而且更加重要的是，它不支持文本缩进。而我们将会看到文本缩进对于我们来说极其重要。一个好的编辑器，比如IDLE（还有VIM）将会自动帮助你做这些事情。</p>
+<p>如果你使用Linux&#x2F;FreeBSD，那么你有很多种选择。如果你是一位有经验的程序员，你一定已经在使用VIM或者Emacs了。勿庸置疑，它们是两个功能最强大的编辑器。使用它们编写你的Python程序，你将从中受益。我个人使用VIM编写我的大多数程序。如果你是一个初学编程的人，那么你可以使用Kate，它也是我最喜欢的编辑器之一。只要你愿意花时间学习使用VIM或Emacs，那么我强烈建议你一定要学习两者之一，因为从长远看来它们对你是极其有帮助的。</p>
+<p>如果你还想寻找一下其他可供选择的编辑器，可以看一下详尽的<a target="_blank" rel="noopener" href="http://wiki.python.org/moin/PythonEditors">Python编辑器列表</a>，然后作出你的选择。你也可以使用Python的IDE（集成开发环境）。请看一下详尽的<a target="_blank" rel="noopener" href="http://wiki.python.org/moin/IntegratedDevelopmentEnvironments">支持Python的IDE列表</a>以获得详尽的信息。一旦你开始编写大型的Python程序，IDE确实很有用。</p>
+<p>我再一次重申，请选择一个合适的编辑器——它能使编写Python程序变得更加有趣、方便。</p>
+<h2 id="使用源文件"><a href="#使用源文件" class="headerlink" title="使用源文件"></a>使用源文件</h2><p>现在让我们重新开始编程。当你学习一种新的编程语言的时候，你编写运行的第一个程序通常都是“Hello World”程序，这已经成为一种传统了。在你运行“Hello World”程序的时候，它所做的事只是说声：“Hello World”。正如提出“Hello World”程序的Simon Cozens[1]所说：</p>
+<blockquote>
+<p>它是编程之神的传统咒语，可以帮助你更好的学习语言。”</p>
+</blockquote>
+<p>启动你选择的编辑器，输入下面这段程序，然后把它保存为helloworld.py。</p>
+<p><strong>例3.2 使用源文件</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename : helloworld.py</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;Hello World&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>(源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/helloworld.py">code&#x2F;helloworld.py</a>)</p>
+<p>为了运行这个程序，请打开shell（Linux终端或者DOS提示符），然后键入命令 <code>python helloworld.py</code> 。如果你使用IDLE，请使用菜单Edit-&gt;Run Script或者使用键盘快捷方式 <code>Ctrl-F5</code> 。输出如下所示。</p>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">python</span> helloworld.<span class="keyword">py</span></span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure>
+
+<p>如果你得到的输出与上面所示的一样，那么恭喜！——你已经成功地运行了你的第一个Python程序。</p>
+<p>万一你得到一个错误，那么请确保你键入的程序 准确无误 ，然后再运行一下程序。注意Python是大小写敏感的，即 <code>print</code> 与 <code>Print</code> 不一样——注意前一个是小写p而后一个是大写P。另外，确保在每一行的开始字符前没有空格或者制表符——我们将在后面讨论为什么这点是重要的。</p>
+<h3 id="它如何工作"><a href="#它如何工作" class="headerlink" title="它如何工作"></a>它如何工作</h3><p>让我们思考一下这个程序的前两行。它们被称作 <em>注释</em> ——任何在#符号右面的内容都是注释。注释主要作为提供给程序读者的笔记。</p>
+<p>Python至少应当有第一行那样的特殊形式的注释。它被称作 组织行 ——源文件的头两个字符是#!，后面跟着一个程序。这行告诉你的Linux&#x2F;Unix系统当你 执行 你的程序的时候，它应该运行哪个解释器。这会在下一节做详细解释。注意，你总是可以通过直接在命令行指定解释器，从而在任何平台上运行你的程序。就如同命令 <code>python helloworld.py</code> 一样。</p>
+<blockquote>
+<p><strong>重要</strong></p>
+</blockquote>
+<blockquote>
+<p>在你的程序中合理地使用注释以解释一些重要的细节——这将有助于你的程序的读者轻松地理解程序在干什么。记住，这个读者可能就是6个月以后的你！</p>
+</blockquote>
+<p>跟在注释之后的是一句Python 语句 ——它只是打印文本“Hello World”。print实际上是一个操作符，而“Hello World”被称为一个字符串——别担心我们会在后面详细解释这些术语。</p>
+<h2 id="可执行的Python程序"><a href="#可执行的Python程序" class="headerlink" title="可执行的Python程序"></a>可执行的Python程序</h2><p>这部分内容只对Linux&#x2F;Unix用户适用，不过Windows用户可能也对程序的第一行比较好奇。首先我们需要通过 <code>chmod</code> 命令，给程序可执行的许可，然后 <em>运行</em> 程序。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">chmod</span> a+x helloworld.py</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./helloworld.py</span></span><br><span class="line">Hello World</span><br></pre></td></tr></table></figure>
+
+<p>chmod命令用来 <em>改变</em> 文件的 <em>模式</em> ，给系统中所有用户这个源文件的执行许可。然后我们可以直接通过指定源文件的位置来执行程序。我们使用.&#x2F;来指示程序位于当前目录。</p>
+<p>为了更加有趣一些，你可以把你的文件名改成仅仅helloworld，然后运行.<strong>&#x2F;helloworld</strong>。这样，这个程序仍然可以工作，因为系统知道它必须用源文件第一行指定的那个解释器来运行程序。</p>
+<p>只要知道程序的确切位置，你现在就可以运行程序了——但是如果你希望你的程序能够从各个位置运行呢？那样的话，你可以把你的程序保存在PATH环境变量中的目录之一。每当你运行任何程序，系统会查找列在PATH环境变量中的各个目录。然后运行那个程序。你只要简单地把这个源文件复制到PATH所列目录之一就可以使你的程序在任何位置都可用了。</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>echo <span class="variable">$PATH</span></span><br><span class="line">/opt/mono/bin/<span class="symbol">:/usr/local/bin</span><span class="symbol">:/usr/bin</span><span class="symbol">:/bin</span><span class="symbol">:/usr/X11R6/bin</span><span class="symbol">:/home/swaroop/bin</span></span><br><span class="line"><span class="variable">$ </span>cp helloworld.py /home/swaroop/bin/helloworld</span><br><span class="line"><span class="variable">$ </span>helloworld</span><br><span class="line"><span class="title class_">Hello</span> <span class="title class_">World</span></span><br></pre></td></tr></table></figure>
+
+<p>我们能够用 <strong>echo</strong> 命令来显示PATH变量，用$给变量名加前缀以向shell表示我们需要这个变量的值。我们看到&#x2F;home&#x2F;swaroop&#x2F;bin是PATH变量中的目录之一。 <strong>swaroop</strong> 是我的系统中使用的用户名。通常，在你的系统中也会有一个相似的目录。你也可以把你选择的目录添加到PATH变量中去——这可以通过运行 <strong>PATH&#x3D;$PATH:&#x2F;home&#x2F;swaroop&#x2F;mydir</strong> 完成，其中“&#x2F;home&#x2F;swaroop&#x2F;mydir”是我想要添加到PATH变量中的目录。</p>
+<p>当你想要在任何时间、任何地方运行你的程序的时候，这个方法十分有用。它就好像创造你自己的指令，如同 <strong>cd</strong> 或其他Linux终端或DOS提示符命令那样。</p>
+<blockquote>
+<p><strong>提示</strong></p>
+</blockquote>
+<blockquote>
+<p>对于Python来说，程序、脚本或者软件都是指同一个东西。</p>
+</blockquote>
+<h2 id="获取帮助"><a href="#获取帮助" class="headerlink" title="获取帮助"></a>获取帮助</h2><p>如果你需要某个Python函数或语句的快速信息帮助，那么你可以使用内建的help功能。尤其在你使用带提示符的命令行的时候，它十分有用。比如，运行 <code>help(str)</code> ——这会显示str类的帮助。str类用于保存你的程序使用的各种文本（字符串）。类将在后面面向对象编程的章节详细解释。</p>
+<blockquote>
+<p><strong>注释</strong></p>
+</blockquote>
+<blockquote>
+<p>按q退出帮助。</p>
+</blockquote>
+<p>类似地，你可以获取Python中几乎所有东西的信息。使用help()去学习更多关于help本身的东西！</p>
+<p>如果你想要获取关于如print那样操作符的帮助，那么你需要正确的设置PYTHONDOCS环境变量。这可以在Linux&#x2F;Unix中轻松地通过 <strong>env</strong> 命令完成。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ env PYTHONDOCS=/usr/share/doc/python-docs-<span class="number">2.3</span><span class="number">.4</span>/html/ python</span><br><span class="line">Python <span class="number">2.3</span><span class="number">.4</span> (<span class="comment">#1, Oct 26 2004, 16:42:40)</span></span><br><span class="line">[GCC <span class="number">3.4</span><span class="number">.2</span> <span class="number">20041017</span> (Red Hat <span class="number">3.4</span><span class="number">.2</span>-<span class="number">6.</span>fc3)] on linux2</span><br><span class="line"><span class="type">Type</span> <span class="string">&quot;help&quot;</span>, <span class="string">&quot;copyright&quot;</span>, <span class="string">&quot;credits&quot;</span> <span class="keyword">or</span> <span class="string">&quot;license&quot;</span> <span class="keyword">for</span> more information.</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">help</span>(<span class="string">&#x27;print&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>你应该注意到我特意在 <code>print</code> 上使用了引号，那样Python就可以理解我是希望获取关于 <code>print</code> 的帮助而不是想要它打印东西。</p>
+<p>注意，我使用的位置是在Fedora Core 3 Linux中的位置——它可能在不同的发行版和版本中有所不同。</p>
+<h2 id="概括"><a href="#概括" class="headerlink" title="概括"></a>概括</h2><p>你现在应该可以方便地编写、保存和运行Python程序了。既然你是一个Python用户，让我们学习更多Python的概念。</p>
+<hr>
+<p>[1]一位最主要的Perl6&#x2F;Parrot高手，轰动的《开始Perl》一书的作者。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>十贰
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/posts/21130.html" title="第3章 最初的步骤">http://example.com/posts/21130.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/41071.html" rel="prev" title="第4章 基本概念">
+      <i class="fa fa-chevron-left"></i> 第4章 基本概念
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/9734.html" rel="next" title="第2章 安装python">
+      第2章 安装python <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%B8%A6%E6%8F%90%E7%A4%BA%E7%AC%A6%E7%9A%84%E8%A7%A3%E9%87%8A%E5%99%A8"><span class="nav-number">2.</span> <span class="nav-text">使用带提示符的解释器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%91%E9%80%89%E4%B8%80%E4%B8%AA%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">3.</span> <span class="nav-text">挑选一个编辑器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%BA%90%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">使用源文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA"><span class="nav-number">4.1.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="nav-number">4.2.</span> <span class="nav-text">它如何工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%9A%84Python%E7%A8%8B%E5%BA%8F"><span class="nav-number">5.</span> <span class="nav-text">可执行的Python程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%B8%AE%E5%8A%A9"><span class="nav-number">6.</span> <span class="nav-text">获取帮助</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E6%8B%AC"><span class="nav-number">7.</span> <span class="nav-text">概括</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="十贰"
+      src="/images/writer.jpeg">
+  <p class="site-author-name" itemprop="name">十贰</p>
+  <div class="site-description" itemprop="description"><div id="binft"></div>  
+  <script>
+    var binft = function (r) {
+      function t() {
+        return b[Math.floor(Math.random() * b.length)]
+      }  
+      function e() {
+        return String.fromCharCode(94 * Math.random() + 33)
+      }
+      function n(r) {
+        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+          var l = document.createElement("span");
+          l.textContent = e(), l.style.color = t(), n.appendChild(l)
+        }
+        return n
+      }
+      function i() {
+        var t = o[c.skillI];
+        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+      }
+      var l = "",
+      o = ["𝖘𝖊𝖎𝖓 𝖟𝖚𝖒 𝖙𝖔𝖉𝖊", "向死而生，反求诸己","日日待明日,万事成蹉跎","丈夫志四海，万里犹比邻","还在看这里吗？","能不能别看了？","文章更精彩...."].map(function (r) {
+      return r + ""
+      }),
+      a = 2,
+      g = 1,
+      s = 5,
+      d = 75,
+      b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+      c = {
+        text: "",
+        prefixP: -s,
+        skillI: 0,
+        skillP: 0,
+        direction: "forward",
+        delay: a,
+        step: g
+      };
+      i()
+      };
+      binft(document.getElementById('binft'));
+  </script></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hehysh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hehysh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:work@hehysh.eu.org" title="E-Mail → mailto:work@hehysh.eu.org" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      传送门
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hehysh.github.io/catch-the-cat/" title="https:&#x2F;&#x2F;hehysh.github.io&#x2F;catch-the-cat&#x2F;" rel="noopener" target="_blank">抓猫小游戏</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wangzhi.hehysh.workers.dev/" title="https:&#x2F;&#x2F;wangzhi.hehysh.workers.dev&#x2F;" rel="noopener" target="_blank">亲爱的总站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十贰的小窝</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">117k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:46</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'hehysh@163.com';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://example.com/posts/21130.html',]
+      });
+      });
+  </script>
+
+</body>
+</html>

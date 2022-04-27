@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="FLOSS基于社区的概念，而它本身基于共享，特别是知识共享的概念。FLOSS可以免费使用、修改和再发行。 如果你已经读了本书，那么你一定熟悉FLOSS，因为你一直在使用Python！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1附录 自由&amp;开放源码软件">
+<meta property="og:url" content="http://example.com/posts/42211.html">
+<meta property="og:site_name" content="十贰的小窝">
+<meta property="og:description" content="FLOSS基于社区的概念，而它本身基于共享，特别是知识共享的概念。FLOSS可以免费使用、修改和再发行。 如果你已经读了本书，那么你一定熟悉FLOSS，因为你一直在使用Python！">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-26T12:22:44.000Z">
+<meta property="article:modified_time" content="2022-04-27T00:41:52.956Z">
+<meta property="article:author" content="十贰">
+<meta property="article:tag" content="十贰">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/posts/42211.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>1附录 自由&开放源码软件 | 十贰的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">十贰的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sec-site">
+
+    <a href="/sec-site/" rel="section"><i class="fa fa-link fa-fw"></i>分站</a>
+
+  </li>
+        <li class="menu-item menu-item-book">
+
+    <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/42211.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/writer.jpeg">
+      <meta itemprop="name" content="十贰">
+      <meta itemprop="description" content="十贰的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十贰的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          1附录 自由&开放源码软件
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-26 12:22:44" itemprop="dateCreated datePublished" datetime="2022-04-26T12:22:44+00:00">2022-04-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-27 00:41:52" itemprop="dateModified" datetime="2022-04-27T00:41:52+00:00">2022-04-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">简易python教程</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>FLOSS基于社区的概念，而它本身基于共享，特别是知识共享的概念。FLOSS可以免费使用、修改和再发行。</p>
+<p>如果你已经读了本书，那么你一定熟悉FLOSS，因为你一直在使用Python！</p>
+<span id="more"></span>
+<p>如果你想要了解更多的FLOSS，你可以探索下面这个列表中的软件。我列出了一些最著名的FLOSS以及那些可以跨平台（即在Linux、Windows等）工作的FLOSS。这样你无需马上切换到Linux就可以尝试使用这些软件了， 尽管你最终一定会转到Linux上的 。</p>
+<ul>
+<li><p>Linux 这是一个正在慢慢被世界接纳的FLOSS操作系统！它最初由Linus Torvalds在学生时候开发。现在，它已经可以与微软Windows相匹敌。最新的2.6版本核心，无论从速度、稳定性还是扩展性角度来说，都是一个巨大的突破。【<a target="_blank" rel="noopener" href="http://www.kernel.org/">Linux核心</a>】</p>
+</li>
+<li><p>Knoppix 这是一个仅仅在CD上运行的Linux发行版！它不需要安装——你只需要重新启动你的计算机，把CD放入光驱，就可以开始使用一个完全的Linux发行版了！你可以使用所有的随标准Linux发行版发行的FLOSS，如运行Python程序、编译C程序、看电影等等。然后再次重启你的计算机，取出CD，就可以使用你现有的操作系统了，就好像什么都没有发生过一样。【<a target="_blank" rel="noopener" href="http://www.knopper.net/">Knoppix</a>】</p>
+</li>
+<li><p>Fedora 这是一个由社区开发维护的发行版，由Red Hat公司赞助。它是最流行的Linux发行版之一。它包含Linux核心、KDE、GNOME和XFCE桌面以及众多的FLOSS，而所有这些都易于安装、易于使用。</p>
+</li>
+<li><p>如果你担心你是一个完全的Linux生手，那么我推荐你尝试Mandrake Linux。最新发布Mandrake 10.1确实很棒。【<a target="_blank" rel="noopener" href="http://fedora.redhat.com/">Fedora Linux</a>、<a target="_blank" rel="noopener" href="http://www.mandrakelinux.com/">Mandrake Linux</a>】</p>
+</li>
+<li><p>OpenOffice.org 这是一个优秀的办公套件，它基于Sun Microsystems的StarOffice软件。OpenOffice由文本编写器、演讲辅助、电子表格和绘图组件等等组成。它甚至可以方便地打开和编辑微软Word和PowerPoint文件。它可以在几乎所有平台上运行。即将推出的OpenOffice 2.0有一些重大的改进。【<a target="_blank" rel="noopener" href="http://www.openoffice.org/">OpenOffice</a>】</p>
+</li>
+<li><p>Mozilla Firefox 这是被认为可以在未来几年击败Internet Explorer（仅按照市场份额计算）的下一代网络浏览器。它极快，它的一些合理的、令人印象深刻的特性广受好评。它的扩展理念允许在它上面添加各种功能。</p>
+</li>
+<li><p>它的姐妹产品Thunderbird是一个优秀的电子邮件客户端，使阅读电子邮件变得十分快捷。【<a target="_blank" rel="noopener" href="http://www.mozilla.org/products/firefox">Mozilla Firefox</a>、<a target="_blank" rel="noopener" href="http://www.mozilla.org/products/thunderbird">Mozilla Thunderbird</a>】</p>
+</li>
+<li><p>Mono 这是一个微软.NET平台的开源实现。它使我们可以在Linux、Windows、FreeBSD、Mac OS和许多其他平台上创建和运行.NET程序。Mono执行CLI和C#的ECMA标准，这个标准已经由微软、英特尔和惠普提交称为一个开放标准。这也是迈向ISO标准的一步。</p>
+</li>
+<li><p>目前，Mono包含一个完整的C#主控制台（它本身也由C#编写！）、一个具备完整特性的ASP.NET实现、许多数据库ADO.NET提供器另外还有每天不断改善和增加的新特性。【<a target="_blank" rel="noopener" href="http://www.mono-project.com/">Mono</a>、<a target="_blank" rel="noopener" href="http://www.ecma-international.org/">ECMA</a>、<a target="_blank" rel="noopener" href="http://www.microsoft.com/net">Microsoft .NET</a>】</p>
+</li>
+<li><p>Apache网络服务器 这是最流行的开源网络服务器。事实上，它是地球上最流行的网络服务器！它运行着几乎60％的网站。对——Apache处理的网站比它所有的竞争对手（包括微软IIS）之和还要多。【<a target="_blank" rel="noopener" href="http://www.apache.org/">Apache</a>】</p>
+</li>
+<li><p>MySQL 这是一个极其流行的开源数据库服务器。它以它的快速最为著名。在它的最新版本中又添加了更多的特性。【<a target="_blank" rel="noopener" href="http://www.mysql.com/">MySQL</a>】</p>
+</li>
+<li><p>MPlayer 这是一个视频播放器，可以播放DivX、MP3、Ogg、VCD、DVD……谁说开源软件就不能具有趣味呢？【<a target="_blank" rel="noopener" href="http://www.mplayerhq.hu/">MPlayer</a>】</p>
+</li>
+<li><p>Movix 这是一个Linux发行版，它基于Knoppix仅仅在CD上运行用来播放电影！你可以创建Movix的CD。它们是可启动的CD，当你重启计算机的时候，放入CD，电影就会自己开始播放！使用Movix观看电影，你甚至不需要硬盘。【<a target="_blank" rel="noopener" href="http://movix.sourceforge.net/">Movix</a>】</p>
+</li>
+</ul>
+<p>上面这个列表只是希望给你一个大概的印象——还有很多别的优秀FLOSS，比如Perl语言、PHP语言、Drupal网站内容管理系统、PostgreSQL数据库服务器、TORCS赛车游戏、KDevelop IDE、Anjuta IDE、Xine——电影播放器、VIM编辑器、Quanta+编辑器、XMMS音频播放器、GIMP图像编辑程序……这个列表可以一直继续下去。</p>
+<p>访问下述网站以获取更多FLOSS信息：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="http://www.sourceforge.net/">SourceForge</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.freshmeat.net/">FreshMeat</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.kde.org/">KDE</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.gnome.org/">GNOME</a></p>
+</li>
+</ul>
+<p>要获知FLOSS世界的最新进展，请访问下述网站：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="http://www.osnews.com/">OSNews</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.linuxtoday.com/">LinuxToday</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.newsforge.com/">NewsForge</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.swaroopch.info/blog">SwaroopCH’s blog</a></p>
+</li>
+</ul>
+<p>那么，现在就出发去探索广博、免费、开放的FLOSS世界了吧！</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>十贰
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/posts/42211.html" title="1附录 自由&amp;开放源码软件">http://example.com/posts/42211.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/60447.html" rel="prev" title="2附录 关于本书">
+      <i class="fa fa-chevron-left"></i> 2附录 关于本书
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/53994.html" rel="next" title="第16章 接下来学习什么？">
+      第16章 接下来学习什么？ <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="十贰"
+      src="/images/writer.jpeg">
+  <p class="site-author-name" itemprop="name">十贰</p>
+  <div class="site-description" itemprop="description"><div id="binft"></div>  
+  <script>
+    var binft = function (r) {
+      function t() {
+        return b[Math.floor(Math.random() * b.length)]
+      }  
+      function e() {
+        return String.fromCharCode(94 * Math.random() + 33)
+      }
+      function n(r) {
+        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+          var l = document.createElement("span");
+          l.textContent = e(), l.style.color = t(), n.appendChild(l)
+        }
+        return n
+      }
+      function i() {
+        var t = o[c.skillI];
+        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+      }
+      var l = "",
+      o = ["𝖘𝖊𝖎𝖓 𝖟𝖚𝖒 𝖙𝖔𝖉𝖊", "向死而生，反求诸己","日日待明日,万事成蹉跎","丈夫志四海，万里犹比邻","还在看这里吗？","能不能别看了？","文章更精彩...."].map(function (r) {
+      return r + ""
+      }),
+      a = 2,
+      g = 1,
+      s = 5,
+      d = 75,
+      b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+      c = {
+        text: "",
+        prefixP: -s,
+        skillI: 0,
+        skillP: 0,
+        direction: "forward",
+        delay: a,
+        step: g
+      };
+      i()
+      };
+      binft(document.getElementById('binft'));
+  </script></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hehysh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hehysh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:work@hehysh.eu.org" title="E-Mail → mailto:work@hehysh.eu.org" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      传送门
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hehysh.github.io/catch-the-cat/" title="https:&#x2F;&#x2F;hehysh.github.io&#x2F;catch-the-cat&#x2F;" rel="noopener" target="_blank">抓猫小游戏</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wangzhi.hehysh.workers.dev/" title="https:&#x2F;&#x2F;wangzhi.hehysh.workers.dev&#x2F;" rel="noopener" target="_blank">亲爱的总站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十贰的小窝</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">117k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:46</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'hehysh@163.com';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://example.com/posts/42211.html',]
+      });
+      });
+  </script>
+
+</body>
+</html>

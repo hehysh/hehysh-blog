@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="简介到目前为止，在我们的程序中，我们都是根据操作数据的函数或语句块来设计程序的。这被称为 面向过程的 编程。还有一种把数据和功能结合起来，用称为对象的东西包裹起来组织程序的方法。这种方法称为 面向对象的 编程理念。在大多数时候你可以使用过程性编程，但是有些时候当你想要编写大型程序或是寻求一个更加合适的解决方案的时候，你就得使用面向对象的编程技术。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第11章 面向对象的编程">
+<meta property="og:url" content="http://example.com/posts/61783.html">
+<meta property="og:site_name" content="十贰的小窝">
+<meta property="og:description" content="简介到目前为止，在我们的程序中，我们都是根据操作数据的函数或语句块来设计程序的。这被称为 面向过程的 编程。还有一种把数据和功能结合起来，用称为对象的东西包裹起来组织程序的方法。这种方法称为 面向对象的 编程理念。在大多数时候你可以使用过程性编程，但是有些时候当你想要编写大型程序或是寻求一个更加合适的解决方案的时候，你就得使用面向对象的编程技术。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-26T12:22:49.000Z">
+<meta property="article:modified_time" content="2022-04-27T00:41:52.956Z">
+<meta property="article:author" content="十贰">
+<meta property="article:tag" content="十贰">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/posts/61783.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>第11章 面向对象的编程 | 十贰的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">十贰的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sec-site">
+
+    <a href="/sec-site/" rel="section"><i class="fa fa-link fa-fw"></i>分站</a>
+
+  </li>
+        <li class="menu-item menu-item-book">
+
+    <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/61783.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/writer.jpeg">
+      <meta itemprop="name" content="十贰">
+      <meta itemprop="description" content="十贰的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十贰的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第11章 面向对象的编程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-26 12:22:49" itemprop="dateCreated datePublished" datetime="2022-04-26T12:22:49+00:00">2022-04-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-27 00:41:52" itemprop="dateModified" datetime="2022-04-27T00:41:52+00:00">2022-04-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">简易python教程</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>8.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>7 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>到目前为止，在我们的程序中，我们都是根据操作数据的函数或语句块来设计程序的。这被称为 面向过程的 编程。还有一种把数据和功能结合起来，用称为对象的东西包裹起来组织程序的方法。这种方法称为 面向对象的 编程理念。在大多数时候你可以使用过程性编程，但是有些时候当你想要编写大型程序或是寻求一个更加合适的解决方案的时候，你就得使用面向对象的编程技术。</p>
+<span id="more"></span>
+<p>类和对象是面向对象编程的两个主要方面。类创建一个新类型，而对象这个类的 实例 。这类似于你有一个int类型的变量，这存储整数的变量是int类的实例（对象）。</p>
+<blockquote>
+<p><strong>给C&#x2F;C++&#x2F;Java&#x2F;C#程序员的注释</strong> </p>
+</blockquote>
+<blockquote>
+<p>注意，即便是整数也被作为对象（属于int类）。这和C++、Java（1.5版之前）把整数纯粹作为类型是不同的。通过help(int)了解更多这个类的详情。 C#和Java 1.5程序员会熟悉这个概念，因为它类似与 封装与解封装 的概念。</p>
+</blockquote>
+<p>对象可以使用普通的 属于 对象的变量存储数据。属于一个对象或类的变量被称为域。对象也可以使用 属于 类的函数来具有功能。这样的函数被称为类的方法。这些术语帮助我们把它们与孤立的函数和变量区分开来。域和方法可以合称为类的属性。</p>
+<p>域有两种类型——属于每个实例&#x2F;类的对象或属于类本身。它们分别被称为实例变量和类变量。</p>
+<p>类使用class关键字创建。类的域和方法被列在一个缩进块中。</p>
+<h2 id="self"><a href="#self" class="headerlink" title="self"></a>self</h2><p>类的方法与普通的函数只有一个特别的区别——它们必须有一个额外的第一个参数名称，但是在调用这个方法的时候你不为这个参数赋值，Python会提供这个值。这个特别的变量指对象本身，按照惯例它的名称是self。</p>
+<p>虽然你可以给这个参数任何名称，但是 强烈建议 你使用self这个名称——其他名称都是不赞成你使用的。使用一个标准的名称有很多优点——你的程序读者可以迅速识别它，如果使用self的话，还有些IDE（集成开发环境）也可以帮助你。</p>
+<blockquote>
+<p><strong>给C++&#x2F;Java&#x2F;C#程序员的注释</strong> </p>
+</blockquote>
+<blockquote>
+<p>Python中的self等价于C++中的self指针和Java、C#中的this参考。</p>
+</blockquote>
+<p>你一定很奇怪Python如何给self赋值以及为何你不需要给它赋值。举一个例子会使此变得清晰。假如你有一个类称为MyClass和这个类的一个实例MyObject。当你调用这个对象的方法MyObject.method(arg1, arg2)的时候，这会由Python自动转为MyClass.method(MyObject, arg1, arg2)——这就是self的原理了。</p>
+<p>这也意味着如果你有一个不需要参数的方法，你还是得给这个方法定义一个self参数。</p>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><p>一个尽可能简单的类如下面这个例子所示。</p>
+<h3 id="创建一个类"><a href="#创建一个类" class="headerlink" title="创建一个类"></a>创建一个类</h3><p><strong>例11.1 创建一个类</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: simplestclass.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment"># An empty block</span></span><br><span class="line"></span><br><span class="line">p = Person()</span><br><span class="line"><span class="built_in">print</span> p</span><br></pre></td></tr></table></figure>
+
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/simplestclass.py">code&#x2F;simplestclass.py</a>）</p>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python simplestclass.py</span><br><span class="line">&lt;__main__.Person<span class="built_in"> instance </span>at 0xf6fcb18c&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="它如何工作"><a href="#它如何工作" class="headerlink" title="它如何工作"></a>它如何工作</h3><p>我们使用class语句后跟类名，创建了一个新的类。这后面跟着一个缩进的语句块形成类体。在这个例子中，我们使用了一个空白块，它由pass语句表示。</p>
+<p>接下来，我们使用类名后跟一对圆括号来创建一个对象&#x2F;实例。（我们将在下面的章节中学习更多的如何创建实例的方法）。为了验证，我们简单地打印了这个变量的类型。它告诉我们我们已经在__main__模块中有了一个Person类的实例。</p>
+<p>可以注意到存储对象的计算机内存地址也打印了出来。这个地址在你的计算机上会是另外一个值，因为Python可以在任何空位存储对象。</p>
+<h2 id="对象的方法"><a href="#对象的方法" class="headerlink" title="对象的方法"></a>对象的方法</h2><p>我们已经讨论了类&#x2F;对象可以拥有像函数一样的方法，这些方法与函数的区别只是一个额外的self变量。现在我们来学习一个例子。</p>
+<h3 id="使用对象的方法"><a href="#使用对象的方法" class="headerlink" title="使用对象的方法"></a>使用对象的方法</h3><p><strong>例11.2 使用对象的方法</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: method.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sayHi</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Hello, how are you?&#x27;</span></span><br><span class="line"></span><br><span class="line">p = Person()</span><br><span class="line">p.sayHi()</span><br><span class="line"></span><br><span class="line"><span class="comment"># This short example can also be written as Person().sayHi()</span></span><br></pre></td></tr></table></figure>
+
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/method.py">code&#x2F;method.py</a>）</p>
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">python</span> method.<span class="keyword">py</span></span><br><span class="line">Hello, how are you?</span><br></pre></td></tr></table></figure>
+
+<h3 id="它如何工作-1"><a href="#它如何工作-1" class="headerlink" title="它如何工作"></a>它如何工作</h3><p>这里我们看到了self的用法。注意sayHi方法没有任何参数，但仍然在函数定义时有self。</p>
+<h2 id="init-方法"><a href="#init-方法" class="headerlink" title="__init__方法"></a>__init__方法</h2><p>在Python的类中有很多方法的名字有特殊的重要意义。现在我们将学习__init__方法的意义。</p>
+<p>__init__方法在类的一个对象被建立时，马上运行。这个方法可以用来对你的对象做一些你希望的 初始化 。注意，这个名称的开始和结尾都是双下划线。</p>
+<h3 id="使用-init-方法"><a href="#使用-init-方法" class="headerlink" title="使用__init__方法"></a>使用__init__方法</h3><p><strong>例11.3 使用__init__方法</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">	<span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: class_init.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sayHi</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Hello, my name is&#x27;</span>, self.name</span><br><span class="line"></span><br><span class="line">p = Person(<span class="string">&#x27;Swaroop&#x27;</span>)</span><br><span class="line">p.sayHi()</span><br><span class="line"></span><br><span class="line"><span class="comment"># This short example can also be written as Person(&#x27;Swaroop&#x27;).sayHi()</span></span><br></pre></td></tr></table></figure>
+
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/class_init.py">code&#x2F;class_init.py</a>）</p>
+<h3 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">python</span> class_init.<span class="keyword">py</span></span><br><span class="line">Hello, my name <span class="keyword">is</span> Swaroop</span><br></pre></td></tr></table></figure>
+
+<h3 id="它如何工作-2"><a href="#它如何工作-2" class="headerlink" title="它如何工作"></a>它如何工作</h3><p>这里，我们把__init__方法定义为取一个参数name（以及普通的参数self）。在这个__init__里，我们只是创建一个新的域，也称为name。注意它们是两个不同的变量，尽管它们有相同的名字。点号使我们能够区分它们。</p>
+<p>最重要的是，我们没有专门调用__init__方法，只是在创建一个类的新实例的时候，把参数包括在圆括号内跟在类名后面，从而传递给__init__方法。这是这种方法的重要之处。</p>
+<p>现在，我们能够在我们的方法中使用self.name域。这在sayHi方法中得到了验证。</p>
+<blockquote>
+<p><strong>给C++&#x2F;Java&#x2F;C#程序员的注释</strong> </p>
+</blockquote>
+<blockquote>
+<p>__init__方法类似于C++、C#和Java中的 constructor 。</p>
+</blockquote>
+<h2 id="类与对象的方法"><a href="#类与对象的方法" class="headerlink" title="类与对象的方法"></a>类与对象的方法</h2><p>我们已经讨论了类与对象的功能部分，现在我们来看一下它的数据部分。事实上，它们只是与类和对象的名称空间 绑定 的普通变量，即这些名称只在这些类与对象的前提下有效。</p>
+<p>有两种类型的 域 ——类的变量和对象的变量，它们根据是类还是对象 拥有 这个变量而区分。</p>
+<p>类的变量 由一个类的所有对象（实例）共享使用。只有一个类变量的拷贝，所以当某个对象对类的变量做了改动的时候，这个改动会反映到所有其他的实例上。</p>
+<p>对象的变量 由类的每个对象&#x2F;实例拥有。因此每个对象有自己对这个域的一份拷贝，即它们不是共享的，在同一个类的不同实例中，虽然对象的变量有相同的名称，但是是互不相关的。通过一个例子会使这个易于理解。</p>
+<h3 id="使用类与对象的变量"><a href="#使用类与对象的变量" class="headerlink" title="使用类与对象的变量"></a>使用类与对象的变量</h3><p><strong>例11.4 使用类与对象的变量</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: objvar.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;Represents a person.&#x27;&#x27;&#x27;</span></span><br><span class="line">    population = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;Initializes the person&#x27;s data.&#x27;&#x27;&#x27;</span></span><br><span class="line">        self.name = name</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;(Initializing %s)&#x27;</span> % self.name</span><br><span class="line"></span><br><span class="line">        <span class="comment"># When this person is created, he/she</span></span><br><span class="line">        <span class="comment"># adds to the population</span></span><br><span class="line">        Person.population += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__del__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;I am dying.&#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;%s says bye.&#x27;</span> % self.name</span><br><span class="line"></span><br><span class="line">        Person.population -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> Person.population == <span class="number">0</span>:</span><br><span class="line">            <span class="built_in">print</span> <span class="string">&#x27;I am the last one.&#x27;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span> <span class="string">&#x27;There are still %d people left.&#x27;</span> % Person.population</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sayHi</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;Greeting by the person.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        Really, that&#x27;s all it does.&#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Hi, my name is %s.&#x27;</span> % self.name</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">howMany</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;Prints the current population.&#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> Person.population == <span class="number">1</span>:</span><br><span class="line">            <span class="built_in">print</span> <span class="string">&#x27;I am the only person here.&#x27;</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span> <span class="string">&#x27;We have %d persons here.&#x27;</span> % Person.population</span><br><span class="line"></span><br><span class="line">swaroop = Person(<span class="string">&#x27;Swaroop&#x27;</span>)</span><br><span class="line">swaroop.sayHi()</span><br><span class="line">swaroop.howMany()</span><br><span class="line"></span><br><span class="line">kalam = Person(<span class="string">&#x27;Abdul Kalam&#x27;</span>)</span><br><span class="line">kalam.sayHi()</span><br><span class="line">kalam.howMany()</span><br><span class="line"></span><br><span class="line">swaroop.sayHi()</span><br><span class="line">swaroop.howMany()</span><br></pre></td></tr></table></figure>
+
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/objvar.py">code&#x2F;objvar.py</a>）</p>
+<h3 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h3><figure class="highlight mercury"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ python objvar.py</span><br><span class="line">(Initializing Swaroop)</span><br><span class="line">Hi, my name <span class="keyword">is</span> Swaroop.</span><br><span class="line">I am the only person here.</span><br><span class="line">(Initializing Abdul Kalam)</span><br><span class="line">Hi, my name <span class="keyword">is</span> Abdul Kalam.</span><br><span class="line">We have <span class="number">2</span> persons here.</span><br><span class="line">Hi, my name <span class="keyword">is</span> Swaroop.</span><br><span class="line">We have <span class="number">2</span> persons here.</span><br><span class="line">Abdul Kalam says bye.</span><br><span class="line">There are still <span class="number">1</span> people left.</span><br><span class="line">Swaroop says bye.</span><br><span class="line">I am the last one.</span><br></pre></td></tr></table></figure>
+
+<h3 id="它如何工作-3"><a href="#它如何工作-3" class="headerlink" title="它如何工作"></a>它如何工作</h3><p>这是一个很长的例子，但是它有助于说明类与对象的变量的本质。这里，population属于Person类，因此是一个类的变量。name变量属于对象（它使用self赋值）因此是对象的变量。</p>
+<p>观察可以发现__init__方法用一个名字来初始化Person实例。在这个方法中，我们让population增加1，这是因为我们增加了一个人。同样可以发现，self.name的值根据每个对象指定，这表明了它作为对象的变量的本质。</p>
+<p>记住，你只能使用self变量来参考同一个对象的变量和方法。这被称为 属性参考 。</p>
+<p>在这个程序中，我们还看到docstring对于类和方法同样有用。我们可以在运行时使用Person.__doc__和Person.sayHi.__doc__来分别访问类与方法的文档字符串。</p>
+<p>就如同__init__方法一样，还有一个特殊的方法__del__，它在对象消逝的时候被调用。对象消逝即对象不再被使用，它所占用的内存将返回给系统作它用。在这个方法里面，我们只是简单地把Person.population减1。</p>
+<p>当对象不再被使用时，__del__方法运行，但是很难保证这个方法究竟在 什么时候 运行。如果你想要指明它的运行，你就得使用del语句，就如同我们在以前的例子中使用的那样。</p>
+<blockquote>
+<p><strong>给C++&#x2F;Java&#x2F;C#程序员的注释</strong> </p>
+</blockquote>
+<blockquote>
+<p>Python中所有的类成员（包括数据成员）都是 公共的 ，所有的方法都是 有效的 。<br>只有一个例外：如果你使用的数据成员名称以 双下划线前缀 比如__privatevar，Python的名称管理体系会有效地把它作为私有变量。<br>这样就有一个惯例，如果某个变量只想在类或对象中使用，就应该以单下划线前缀。而其他的名称都将作为公共的，可以被其他类&#x2F;对象使用。记住这只是一个惯例，并不是Python所要求的（与双下划线前缀不同）。<br>同样，注意__del__方法与 destructor 的概念类似。</p>
+</blockquote>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>面向对象的编程带来的主要好处之一是代码的重用，实现这种重用的方法之一是通过 继承 机制。继承完全可以理解成类之间的 类型和子类型 关系。</p>
+<p>假设你想要写一个程序来记录学校之中的教师和学生情况。他们有一些共同属性，比如姓名、年龄和地址。他们也有专有的属性，比如教师的薪水、课程和假期，学生的成绩和学费。</p>
+<p>你可以为教师和学生建立两个独立的类来处理它们，但是这样做的话，如果要增加一个新的共有属性，就意味着要在这两个独立的类中都增加这个属性。这很快就会显得不实用。</p>
+<p>一个比较好的方法是创建一个共同的类称为SchoolMember然后让教师和学生的类 继承 这个共同的类。即它们都是这个类型（类）的子类型，然后我们再为这些子类型添加专有的属性。</p>
+<p>使用这种方法有很多优点。如果我们增加&#x2F;改变了SchoolMember中的任何功能，它会自动地反映到子类型之中。例如，你要为教师和学生都增加一个新的身份证域，那么你只需简单地把它加到SchoolMember类中。然而，在一个子类型之中做的改动不会影响到别的子类型。另外一个优点是你可以把教师和学生对象都作为SchoolMember对象来使用，这在某些场合特别有用，比如统计学校成员的人数。一个子类型在任何需要父类型的场合可以被替换成父类型，即对象可以被视作是父类的实例，这种现象被称为多态现象。</p>
+<p>另外，我们会发现在 重用 父类的代码的时候，我们无需在不同的类中重复它。而如果我们使用独立的类的话，我们就不得不这么做了。</p>
+<p>在上述的场合中，SchoolMember类被称为 基本类 或 超类 。而Teacher和Student类被称为 导出类 或 子类 。</p>
+<p>现在，我们将学习一个例子程序。</p>
+<h3 id="使用继承"><a href="#使用继承" class="headerlink" title="使用继承"></a>使用继承</h3><p><strong>例11.5 使用继承</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: inherit.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SchoolMember</span>:</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;Represents any school member.&#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;(Initialized SchoolMember: %s)&#x27;</span> % self.name</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">tell</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;Tell my details.&#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Name:&quot;%s&quot; Age:&quot;%s&quot;&#x27;</span> % (self.name, self.age),</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Teacher</span>(<span class="title class_ inherited__">SchoolMember</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;Represents a teacher.&#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age, salary</span>):</span><br><span class="line">        SchoolMember.__init__(self, name, age)</span><br><span class="line">        self.salary = salary</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;(Initialized Teacher: %s)&#x27;</span> % self.name</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">tell</span>(<span class="params">self</span>):</span><br><span class="line">        SchoolMember.tell(self)</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Salary: &quot;%d&quot;&#x27;</span> % self.salary</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span>(<span class="title class_ inherited__">SchoolMember</span>):</span><br><span class="line">    <span class="string">&#x27;&#x27;&#x27;Represents a student.&#x27;&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age, marks</span>):</span><br><span class="line">        SchoolMember.__init__(self, name, age)</span><br><span class="line">        self.marks = marks</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;(Initialized Student: %s)&#x27;</span> % self.name</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">tell</span>(<span class="params">self</span>):</span><br><span class="line">        SchoolMember.tell(self)</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Marks: &quot;%d&quot;&#x27;</span> % self.marks</span><br><span class="line"></span><br><span class="line">t = Teacher(<span class="string">&#x27;Mrs. Shrividya&#x27;</span>, <span class="number">40</span>, <span class="number">30000</span>)</span><br><span class="line">s = Student(<span class="string">&#x27;Swaroop&#x27;</span>, <span class="number">22</span>, <span class="number">75</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> <span class="comment"># prints a blank line</span></span><br><span class="line"></span><br><span class="line">members = [t, s]</span><br><span class="line"><span class="keyword">for</span> member <span class="keyword">in</span> members:</span><br><span class="line">    member.tell() <span class="comment"># works for both Teachers and Students</span></span><br></pre></td></tr></table></figure>
+
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/inherit.py">code&#x2F;inherit.py</a>）</p>
+<h3 id="输出-4"><a href="#输出-4" class="headerlink" title="输出"></a>输出</h3><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ python inherit.py</span><br><span class="line">(Initialized <span class="keyword">SchoolMember: </span>Mrs. <span class="keyword">Shrividya)</span></span><br><span class="line"><span class="keyword"></span>(Initialized Teacher: Mrs. <span class="keyword">Shrividya)</span></span><br><span class="line"><span class="keyword"></span>(Initialized <span class="keyword">SchoolMember: </span><span class="keyword">Swaroop)</span></span><br><span class="line"><span class="keyword"></span>(Initialized Student: <span class="keyword">Swaroop)</span></span><br><span class="line"><span class="keyword"></span><span class="symbol"></span></span><br><span class="line"><span class="symbol">Name:</span><span class="string">&quot;Mrs. Shrividya&quot;</span> Age:<span class="string">&quot;40&quot;</span> Salary: <span class="string">&quot;30000&quot;</span></span><br><span class="line"><span class="symbol">Name:</span><span class="string">&quot;Swaroop&quot;</span> Age:<span class="string">&quot;22&quot;</span> Marks: <span class="string">&quot;75&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="它如何工作-4"><a href="#它如何工作-4" class="headerlink" title="它如何工作"></a>它如何工作</h3><p>为了使用继承，我们把基本类的名称作为一个元组跟在定义类时的类名称之后。然后，我们注意到基本类的__init__方法专门使用self变量调用，这样我们就可以初始化对象的基本类部分。这一点十分重要——Python不会自动调用基本类的constructor，你得亲自专门调用它。</p>
+<p>我们还观察到我们在方法调用之前加上类名称前缀，然后把self变量及其他参数传递给它。</p>
+<p>注意，在我们使用SchoolMember类的tell方法的时候，我们把Teacher和Student的实例仅仅作为SchoolMember的实例。</p>
+<p>另外，在这个例子中，我们调用了子类型的tell方法，而不是SchoolMember类的tell方法。可以这样来理解，Python总是首先查找对应类型的方法，在这个例子中就是如此。如果它不能在导出类中找到对应的方法，它才开始到基本类中逐个查找。基本类是在类定义的时候，在元组之中指明的。</p>
+<p>一个术语的注释——如果在继承元组中列了一个以上的类，那么它就被称作 多重继承 。</p>
+<h2 id="概括"><a href="#概括" class="headerlink" title="概括"></a>概括</h2><p>我们已经研究了类和对象的多个内容以及与它们相关的多个术语。通过本章，你已经了解了面向对象的编程的优点和缺陷。Python是一个高度面向对象的语言，理解这些概念会在将来有助于你进一步深入学习Python。</p>
+<p>接下来，我们将学习如何处理输入&#x2F;输出已经如何用Python访问文件。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>十贰
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/posts/61783.html" title="第11章 面向对象的编程">http://example.com/posts/61783.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/15313.html" rel="prev" title="第12章 输入和输出">
+      <i class="fa fa-chevron-left"></i> 第12章 输入和输出
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/34883.html" rel="next" title="第10章-解决问题————编写第一个python脚本">
+      第10章-解决问题————编写第一个python脚本 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#self"><span class="nav-number">2.</span> <span class="nav-text">self</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">3.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%B1%BB"><span class="nav-number">3.1.</span> <span class="nav-text">创建一个类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA"><span class="nav-number">3.2.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="nav-number">3.3.</span> <span class="nav-text">它如何工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">对象的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">使用对象的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-1"><span class="nav-number">4.2.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C-1"><span class="nav-number">4.3.</span> <span class="nav-text">它如何工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#init-%E6%96%B9%E6%B3%95"><span class="nav-number">5.</span> <span class="nav-text">__init__方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-init-%E6%96%B9%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">使用__init__方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-2"><span class="nav-number">5.2.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C-2"><span class="nav-number">5.3.</span> <span class="nav-text">它如何工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">类与对象的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8F%98%E9%87%8F"><span class="nav-number">6.1.</span> <span class="nav-text">使用类与对象的变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-3"><span class="nav-number">6.2.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C-3"><span class="nav-number">6.3.</span> <span class="nav-text">它如何工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">7.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%BB%A7%E6%89%BF"><span class="nav-number">7.1.</span> <span class="nav-text">使用继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-4"><span class="nav-number">7.2.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C-4"><span class="nav-number">7.3.</span> <span class="nav-text">它如何工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E6%8B%AC"><span class="nav-number">8.</span> <span class="nav-text">概括</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="十贰"
+      src="/images/writer.jpeg">
+  <p class="site-author-name" itemprop="name">十贰</p>
+  <div class="site-description" itemprop="description"><div id="binft"></div>  
+  <script>
+    var binft = function (r) {
+      function t() {
+        return b[Math.floor(Math.random() * b.length)]
+      }  
+      function e() {
+        return String.fromCharCode(94 * Math.random() + 33)
+      }
+      function n(r) {
+        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+          var l = document.createElement("span");
+          l.textContent = e(), l.style.color = t(), n.appendChild(l)
+        }
+        return n
+      }
+      function i() {
+        var t = o[c.skillI];
+        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+      }
+      var l = "",
+      o = ["𝖘𝖊𝖎𝖓 𝖟𝖚𝖒 𝖙𝖔𝖉𝖊", "向死而生，反求诸己","日日待明日,万事成蹉跎","丈夫志四海，万里犹比邻","还在看这里吗？","能不能别看了？","文章更精彩...."].map(function (r) {
+      return r + ""
+      }),
+      a = 2,
+      g = 1,
+      s = 5,
+      d = 75,
+      b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+      c = {
+        text: "",
+        prefixP: -s,
+        skillI: 0,
+        skillP: 0,
+        direction: "forward",
+        delay: a,
+        step: g
+      };
+      i()
+      };
+      binft(document.getElementById('binft'));
+  </script></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hehysh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hehysh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:work@hehysh.eu.org" title="E-Mail → mailto:work@hehysh.eu.org" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      传送门
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hehysh.github.io/catch-the-cat/" title="https:&#x2F;&#x2F;hehysh.github.io&#x2F;catch-the-cat&#x2F;" rel="noopener" target="_blank">抓猫小游戏</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wangzhi.hehysh.workers.dev/" title="https:&#x2F;&#x2F;wangzhi.hehysh.workers.dev&#x2F;" rel="noopener" target="_blank">亲爱的总站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十贰的小窝</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">117k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:46</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'hehysh@163.com';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://example.com/posts/61783.html',]
+      });
+      });
+  </script>
+
+</body>
+</html>

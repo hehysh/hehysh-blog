@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="简介Python语言是少有的一种可以称得上即 简单 又 功能强大 的编程语言。你将惊喜地发现Python语言是多么地简单，它注重的是如何解决问题而不是编程语言的语法和结构。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第1章 介绍">
+<meta property="og:url" content="http://example.com/posts/8145.html">
+<meta property="og:site_name" content="十贰的小窝">
+<meta property="og:description" content="简介Python语言是少有的一种可以称得上即 简单 又 功能强大 的编程语言。你将惊喜地发现Python语言是多么地简单，它注重的是如何解决问题而不是编程语言的语法和结构。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-26T12:22:59.000Z">
+<meta property="article:modified_time" content="2022-04-27T00:41:52.956Z">
+<meta property="article:author" content="十贰">
+<meta property="article:tag" content="hide">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/posts/8145.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>第1章 介绍 | 十贰的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">十贰的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sec-site">
+
+    <a href="/sec-site/" rel="section"><i class="fa fa-link fa-fw"></i>分站</a>
+
+  </li>
+        <li class="menu-item menu-item-book">
+
+    <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/8145.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/writer.jpeg">
+      <meta itemprop="name" content="十贰">
+      <meta itemprop="description" content="十贰的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十贰的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第1章 介绍
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-26 12:22:59" itemprop="dateCreated datePublished" datetime="2022-04-26T12:22:59+00:00">2022-04-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-27 00:41:52" itemprop="dateModified" datetime="2022-04-27T00:41:52+00:00">2022-04-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">简易python教程</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Python语言是少有的一种可以称得上即 <strong>简单</strong> 又 <strong>功能强大</strong> 的编程语言。你将惊喜地发现Python语言是多么地简单，它注重的是如何解决问题而不是编程语言的语法和结构。</p>
+<span id="more"></span>
+<p>Python的官方介绍是：</p>
+<blockquote>
+<p>Python是一种简单易学，功能强大的编程语言，它有高效率的高层数据结构，简单而有效地实现面向对象编程。Python简洁的语法和对动态输入的支持，再加上解释性语言的本质，使得它在大多数平台上的许多领域都是一个理想的脚本语言，特别适用于快速的应用程序开发。</p>
+</blockquote>
+<p>我会在下一节里详细地讨论Python的这些特点。</p>
+<blockquote>
+<p><strong>注释</strong></p>
+</blockquote>
+<blockquote>
+<p>Python语言的创造者Guido van Rossum是根据英国广播公司的节目“蟒蛇飞行马戏”命名这个语言的，并非他本人特别喜欢蛇缠起它们的长身躯碾死动物觅食。</p>
+</blockquote>
+<h2 id="Python的特色"><a href="#Python的特色" class="headerlink" title="Python的特色"></a>Python的特色</h2><h3 id="简单"><a href="#简单" class="headerlink" title="简单"></a>简单</h3><p>Python是一种代表简单主义思想的语言。阅读一个良好的Python程序就感觉像是在读英语一样，尽管这个英语的要求非常严格！Python的这种伪代码本质是它最大的优点之一。它使你能够专注于解决问题而不是去搞明白语言本身。</p>
+<h3 id="易学"><a href="#易学" class="headerlink" title="易学"></a>易学</h3><p>就如同你即将看到的一样，Python极其容易上手。前面已经提到了，Python有极其简单的语法。</p>
+<h3 id="免费、开源"><a href="#免费、开源" class="headerlink" title="免费、开源"></a>免费、开源</h3><p>Python是FLOSS（自由&#x2F;开放源码软件）之一。简单地说，你可以自由地发布这个软件的拷贝、阅读它的源代码、对它做改动、把它的一部分用于新的自由软件中。FLOSS是基于一个团体分享知识的概念。这是为什么Python如此优秀的原因之一——它是由一群希望看到一个更加优秀的Python的人创造并经常改进着的。</p>
+<h3 id="高层语言"><a href="#高层语言" class="headerlink" title="高层语言"></a>高层语言</h3><p>当你用Python语言编写程序的时候，你无需考虑诸如如何管理你的程序使用的内存一类的底层细节。</p>
+<h3 id="可移植性"><a href="#可移植性" class="headerlink" title="可移植性"></a>可移植性</h3><p>由于它的开源本质，Python已经被移植在许多平台上（经过改动使它能够工作在不同平台上）。如果你小心地避免使用依赖于系统的特性，那么你的所有Python程序无需修改就可以在下述任何平台上面运行。</p>
+<p>这些平台包括Linux、Windows、FreeBSD、Macintosh、Solaris、OS&#x2F;2、Amiga、AROS、AS&#x2F;400、BeOS、OS&#x2F;390、z&#x2F;OS、Palm OS、QNX、VMS、Psion、Acom RISC OS、VxWorks、PlayStation、Sharp Zaurus、Windows CE甚至还有PocketPC！</p>
+<h3 id="解释性"><a href="#解释性" class="headerlink" title="解释性"></a>解释性</h3><p>这一点需要一些解释。</p>
+<p>一个用编译性语言比如C或C++写的程序可以从源文件（即C或C++语言）转换到一个你的计算机使用的语言（二进制代码，即0和1）。这个过程通过编译器和不同的标记、选项完成。当你运行你的程序的时候，连接&#x2F;转载器软件把你的程序从硬盘复制到内存中并且运行。</p>
+<p>而Python语言写的程序不需要编译成二进制代码。你可以直接从源代码 运行 程序。在计算机内部，Python解释器把源代码转换成称为字节码的中间形式，然后再把它翻译成计算机使用的机器语言并运行。事实上，由于你不再需要担心如何编译程序，如何确保连接转载正确的库等等，所有这一切使得使用Python更加简单。由于你只需要把你的Python程序拷贝到另外一台计算机上，它就可以工作了，这也使得你的Python程序更加易于移植。</p>
+<h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><p>Python即支持面向过程的编程也支持面向对象的编程。在 <strong>面向过程</strong> 的语言中，程序是由过程或仅仅是可重用代码的函数构建起来的。在 <strong>面向对象</strong> 的语言中，程序是由数据和功能组合而成的对象构建起来的。与其他主要的语言如C++和Java相比，Python以一种非常强大又简单的方式实现面向对象编程。</p>
+<h3 id="可扩展性"><a href="#可扩展性" class="headerlink" title="可扩展性"></a>可扩展性</h3><p>如果你需要你的一段关键代码运行得更快或者希望某些算法不公开，你可以把你的部分程序用C或C++编写，然后在你的Python程序中使用它们。</p>
+<h3 id="可嵌入性"><a href="#可嵌入性" class="headerlink" title="可嵌入性"></a>可嵌入性</h3><p>你可以把Python嵌入你的C&#x2F;C++程序，从而向你的程序用户提供脚本功能。</p>
+<h3 id="丰富的库"><a href="#丰富的库" class="headerlink" title="丰富的库"></a>丰富的库</h3><p>Python标准库确实很庞大。它可以帮助你处理各种工作，包括正则表达式、文档生成、单元测试、线程、数据库、网页浏览器、CGI、FTP、电子邮件、XML、XML-RPC、HTML、WAV文件、密码系统、GUI（图形用户界面）、Tk和其他与系统有关的操作。记住，只要安装了Python，所有这些功能都是可用的。这被称作Python的“功能齐全”理念。</p>
+<p>除了标准库以外，还有许多其他高质量的库，如<a target="_blank" rel="noopener" href="http://www.wxpython.org/">wxPython</a>、<a target="_blank" rel="noopener" href="http://www.twistedmatrix.com/products/twisted">Twisted</a>和<a target="_blank" rel="noopener" href="http://www.pythonware.com/products/pil/index.htm">Python图像库</a>等等。</p>
+<h3 id="概括"><a href="#概括" class="headerlink" title="概括"></a>概括</h3><p>Python确实是一种十分精彩又强大的语言。它合理地结合了高性能与使得编写程序简单有趣的特色。</p>
+<h2 id="为什么不使用Perl？"><a href="#为什么不使用Perl？" class="headerlink" title="为什么不使用Perl？"></a>为什么不使用Perl？</h2><p>也许你以前并不知道，Perl是另外一种极其流行的开源解释性编程语言。</p>
+<p>如果你曾经尝试过用Perl语言编写一个大程序，你一定会自己回答这个问题。在规模较小的时候，Perl程序是简单的。它可以胜任于小型的应用程序和脚本，“使工作完成”。然而，当你想开始写一些大一点的程序的时候，Perl程序就变得不实用了。我是通过为Yahoo编写大型Perl程序的经验得出这样的总结的！</p>
+<p>与Perl相比，Python程序一定会更简单、更清晰、更易于编写，从而也更加易懂、易维护。我确实也很喜欢Perl，用它来做一些日常的各种事情。不过当我要写一个程序的时候，我总是想到使用Python，这对我来说已经成了十分自然的事。Perl已经经历了多次大的修正和改变，遗憾的是，即将发布的Perl 6似乎仍然没有在这个方面做什么改进。</p>
+<p>我感到Perl唯一也是十分重要的优势是它庞大的<a target="_blank" rel="noopener" href="http://cpan.perl.org/">CPAN</a>库——综合Perl存档网络。就如同这个名字所指的意思一样，这是一个巨大的Perl模块集，它大得让人难以置信——你几乎用这些模块在计算机上做任何事情。Perl的模块比Python多的原因之一是Perl拥有更加悠久的历史。或许我会在<a target="_blank" rel="noopener" href="https://groups.google.com/groups?q=comp.lang.python">comp.lang.python</a>上建议把Perl模块移植到Python上的计划。</p>
+<p>另外，新的<a target="_blank" rel="noopener" href="http://www.parrot.org/">Parrot虚拟机</a>按设计可以运行完全重新设计的Perl 6也可以运行Python和其他解释性语言如Ruby、PHP和Tcl等等。这意味着你将来 或许 可以在Python上使用所有Perl的模块。这将成为两全其美的事——强大的CPAN库与强大的Python语言结合在一起。我们将拭目以待。</p>
+<h2 id="程序员的话"><a href="#程序员的话" class="headerlink" title="程序员的话"></a>程序员的话</h2><p>读一下像ESR这样的超级电脑高手谈Python的话，你会感到十分有意思：</p>
+<blockquote>
+<p><strong>Eric S. Raymond</strong>是《The Cathedral and the Bazaar》的作者、“开放源码”一词的提出人。他说<a target="_blank" rel="noopener" href="http://www.linuxjournal.com/article/3882">Python已经成为了他最喜爱的编程语言</a>。这篇文章也是促使我第一次接触Python的真正原动力。</p>
+</blockquote>
+<!-- -->
+<blockquote>
+<p><strong>Bruce Eckel</strong>著名的《Thinking in Java》和《Thinking in C++》的作者。他说没有一种语言比得上Python使他的工作效率如此之高。同时他说Python可能是唯一一种旨在帮助程序员把事情弄得更加简单的语言。请阅读<a target="_blank" rel="noopener" href="http://www.artima.com/inv/aboutme.html">完整的采访</a>以获得更详细的内容。</p>
+</blockquote>
+<!-- -->
+<blockquote>
+<p><strong>Peter Norvig</strong>是著名的Lisp语言书籍的作者和Google公司的搜索质量主任（感谢Guido van Rossum告诉我这一点）。他说Python始终是Google的主要部分。事实上你看一下<a target="_blank" rel="noopener" href="http://www.google.com/about/jobs/">Google招聘</a>的网页就可以验证这一点。在那个网页上，Python知识是对软件工程师的一个必需要求。</p>
+</blockquote>
+<!-- -->
+<blockquote>
+<p><strong>Bruce Perens</strong>是OpenSource.org和UserLinux项目的一位共同创始人。UserLinux旨在创造一个可以被多家发行商支持标准的Linux发行版。Python击败了其它竞争对手如Perl和Ruby成为UserLinux支持的主要编程语言。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>十贰
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/posts/8145.html" title="第1章 介绍">http://example.com/posts/8145.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/hide/" rel="tag"><i class="fa fa-tag"></i> hide</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/9734.html" rel="prev" title="第2章 安装python">
+      <i class="fa fa-chevron-left"></i> 第2章 安装python
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/1421.html" rel="next" title="前言（必看）">
+      前言（必看） <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python%E7%9A%84%E7%89%B9%E8%89%B2"><span class="nav-number">2.</span> <span class="nav-text">Python的特色</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95"><span class="nav-number">2.1.</span> <span class="nav-text">简单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%93%E5%AD%A6"><span class="nav-number">2.2.</span> <span class="nav-text">易学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%8D%E8%B4%B9%E3%80%81%E5%BC%80%E6%BA%90"><span class="nav-number">2.3.</span> <span class="nav-text">免费、开源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E5%B1%82%E8%AF%AD%E8%A8%80"><span class="nav-number">2.4.</span> <span class="nav-text">高层语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E7%A7%BB%E6%A4%8D%E6%80%A7"><span class="nav-number">2.5.</span> <span class="nav-text">可移植性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E6%80%A7"><span class="nav-number">2.6.</span> <span class="nav-text">解释性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">2.7.</span> <span class="nav-text">面向对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E6%89%A9%E5%B1%95%E6%80%A7"><span class="nav-number">2.8.</span> <span class="nav-text">可扩展性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E5%B5%8C%E5%85%A5%E6%80%A7"><span class="nav-number">2.9.</span> <span class="nav-text">可嵌入性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%B0%E5%AF%8C%E7%9A%84%E5%BA%93"><span class="nav-number">2.10.</span> <span class="nav-text">丰富的库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E6%8B%AC"><span class="nav-number">2.11.</span> <span class="nav-text">概括</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E4%BD%BF%E7%94%A8Perl%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">为什么不使用Perl？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9A%84%E8%AF%9D"><span class="nav-number">4.</span> <span class="nav-text">程序员的话</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="十贰"
+      src="/images/writer.jpeg">
+  <p class="site-author-name" itemprop="name">十贰</p>
+  <div class="site-description" itemprop="description"><div id="binft"></div>  
+  <script>
+    var binft = function (r) {
+      function t() {
+        return b[Math.floor(Math.random() * b.length)]
+      }  
+      function e() {
+        return String.fromCharCode(94 * Math.random() + 33)
+      }
+      function n(r) {
+        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+          var l = document.createElement("span");
+          l.textContent = e(), l.style.color = t(), n.appendChild(l)
+        }
+        return n
+      }
+      function i() {
+        var t = o[c.skillI];
+        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+      }
+      var l = "",
+      o = ["𝖘𝖊𝖎𝖓 𝖟𝖚𝖒 𝖙𝖔𝖉𝖊", "向死而生，反求诸己","日日待明日,万事成蹉跎","丈夫志四海，万里犹比邻","还在看这里吗？","能不能别看了？","文章更精彩...."].map(function (r) {
+      return r + ""
+      }),
+      a = 2,
+      g = 1,
+      s = 5,
+      d = 75,
+      b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+      c = {
+        text: "",
+        prefixP: -s,
+        skillI: 0,
+        skillP: 0,
+        direction: "forward",
+        delay: a,
+        step: g
+      };
+      i()
+      };
+      binft(document.getElementById('binft'));
+  </script></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hehysh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hehysh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:work@hehysh.eu.org" title="E-Mail → mailto:work@hehysh.eu.org" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      传送门
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hehysh.github.io/catch-the-cat/" title="https:&#x2F;&#x2F;hehysh.github.io&#x2F;catch-the-cat&#x2F;" rel="noopener" target="_blank">抓猫小游戏</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wangzhi.hehysh.workers.dev/" title="https:&#x2F;&#x2F;wangzhi.hehysh.workers.dev&#x2F;" rel="noopener" target="_blank">亲爱的总站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十贰的小窝</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">117k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:46</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'hehysh@163.com';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://example.com/posts/8145.html',]
+      });
+      });
+  </script>
+
+</body>
+</html>

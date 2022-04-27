@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="简介你已经学习了如何在你的程序中定义一次函数而重用代码。如果你想要在其他程序中重用很多函数，那么你该如何编写程序呢？你可能已经猜到了，答案是使用模块。模块基本上就是一个包含了所有你定义的函数和变量的文件。为了在其他程序中重用模块，模块的文件名 必须 以.py为扩展名。 模块可以从其他程序 输入 以便利用它的功能。这也是我们使用Python标准库的方法。首先，我们将学习如何使用标准库模块。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第8章 模块">
+<meta property="og:url" content="http://example.com/posts/53577.html">
+<meta property="og:site_name" content="十贰的小窝">
+<meta property="og:description" content="简介你已经学习了如何在你的程序中定义一次函数而重用代码。如果你想要在其他程序中重用很多函数，那么你该如何编写程序呢？你可能已经猜到了，答案是使用模块。模块基本上就是一个包含了所有你定义的函数和变量的文件。为了在其他程序中重用模块，模块的文件名 必须 以.py为扩展名。 模块可以从其他程序 输入 以便利用它的功能。这也是我们使用Python标准库的方法。首先，我们将学习如何使用标准库模块。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-26T12:22:52.000Z">
+<meta property="article:modified_time" content="2022-04-27T00:41:52.956Z">
+<meta property="article:author" content="十贰">
+<meta property="article:tag" content="十贰">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/posts/53577.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>第8章 模块 | 十贰的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">十贰的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sec-site">
+
+    <a href="/sec-site/" rel="section"><i class="fa fa-link fa-fw"></i>分站</a>
+
+  </li>
+        <li class="menu-item menu-item-book">
+
+    <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/53577.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/writer.jpeg">
+      <meta itemprop="name" content="十贰">
+      <meta itemprop="description" content="十贰的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十贰的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第8章 模块
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-26 12:22:52" itemprop="dateCreated datePublished" datetime="2022-04-26T12:22:52+00:00">2022-04-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-27 00:41:52" itemprop="dateModified" datetime="2022-04-27T00:41:52+00:00">2022-04-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">简易python教程</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>你已经学习了如何在你的程序中定义一次函数而重用代码。如果你想要在其他程序中重用很多函数，那么你该如何编写程序呢？你可能已经猜到了，答案是使用模块。模块基本上就是一个包含了所有你定义的函数和变量的文件。为了在其他程序中重用模块，模块的文件名 <strong>必须</strong> 以.py为扩展名。</p>
+<p>模块可以从其他程序 输入 以便利用它的功能。这也是我们使用Python标准库的方法。首先，我们将学习如何使用标准库模块。</p>
+<span id="more"></span>
+<h3 id="使用sys模块"><a href="#使用sys模块" class="headerlink" title="使用sys模块"></a>使用sys模块</h3><p><strong>例8.1 使用sys模块</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: using_sys.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;The command line arguments are:&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> sys.argv:</span><br><span class="line">    <span class="built_in">print</span> i</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;\n\nThe PYTHONPATH is&#x27;</span>, sys.path, <span class="string">&#x27;\n&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/using_sys.py">code&#x2F;using_sys.py</a>）</p>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">python</span> using_sys.<span class="keyword">py</span> we are arguments</span><br><span class="line">The <span class="keyword">command</span> <span class="built_in">line</span> arguments are:</span><br><span class="line">using_sys.<span class="keyword">py</span></span><br><span class="line">we</span><br><span class="line">are</span><br><span class="line">arguments</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">The PYTHONPATH <span class="keyword">is</span> [<span class="string">&#x27;/home/swaroop/byte/code&#x27;</span>, <span class="string">&#x27;/usr/lib/python23.zip&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;/usr/lib/python2.3&#x27;</span>, <span class="string">&#x27;/usr/lib/python2.3/plat-linux2&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;/usr/lib/python2.3/lib-tk&#x27;</span>, <span class="string">&#x27;/usr/lib/python2.3/lib-dynload&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;/usr/lib/python2.3/site-packages&#x27;</span>, <span class="string">&#x27;/usr/lib/python2.3/site-packages/gtk-2.0&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="它如何工作"><a href="#它如何工作" class="headerlink" title="它如何工作"></a>它如何工作</h3><p>首先，我们利用import语句 输入 sys模块。基本上，这句语句告诉Python，我们想要使用这个模块。sys模块包含了与Python解释器和它的环境有关的函数。</p>
+<p>当Python执行import sys语句的时候，它在sys.path变量中所列目录中寻找sys.py模块。如果找到了这个文件，这个模块的主块中的语句将被运行，然后这个模块将能够被你 使用 。注意，初始化过程仅在我们 第一次 输入模块的时候进行。另外，“sys”是“system”的缩写。</p>
+<p>sys模块中的argv变量通过使用点号指明——sys.argv——这种方法的一个优势是这个名称不会与任何在你的程序中使用的argv变量冲突。另外，它也清晰地表明了这个名称是sys模块的一部分。</p>
+<p>sys.argv变量是一个字符串的 列表 （列表会在后面的章节详细解释）。特别地，sys.argv包含了 命令行参数 的列表，即使用命令行传递给你的程序的参数。</p>
+<p>如果你使用IDE编写运行这些程序，请在菜单里寻找一个指定程序的命令行参数的方法。</p>
+<p>这里，当我们执行python using_sys.py we are arguments的时候，我们使用python命令运行using_sys.py模块，后面跟着的内容被作为参数传递给程序。Python为我们把它存储在sys.argv变量中。</p>
+<p>记住，脚本的名称总是sys.argv列表的第一个参数。所以，在这里，’using_sys.py’是sys.argv[0]、’we’是sys.argv[1]、’are’是sys.argv[2]以及’arguments’是sys.argv[3]。注意，Python从0开始计数，而非从1开始。</p>
+<p>sys.path包含输入模块的目录名列表。我们可以观察到sys.path的第一个字符串是空的——这个空的字符串表示当前目录也是sys.path的一部分，这与PYTHONPATH环境变量是相同的。这意味着你可以直接输入位于当前目录的模块。否则，你得把你的模块放在sys.path所列的目录之一。</p>
+<h2 id="字节编译的-pyc文件"><a href="#字节编译的-pyc文件" class="headerlink" title="字节编译的.pyc文件"></a>字节编译的.pyc文件</h2><p>输入一个模块相对来说是一个比较费时的事情，所以Python做了一些技巧，以便使输入模块更加快一些。一种方法是创建 字节编译的文件 ，这些文件以.pyc作为扩展名。字节编译的文件与Python变换程序的中间状态有关（是否还记得Python如何工作的介绍？）。当你在下次从别的程序输入这个模块的时候，.pyc文件是十分有用的——它会快得多，因为一部分输入模块所需的处理已经完成了。另外，这些字节编译的文件也是与平台无关的。所以，现在你知道了那些.pyc文件事实上是什么了。</p>
+<h2 id="from-import语句"><a href="#from-import语句" class="headerlink" title="from..import语句"></a>from..import语句</h2><p>如果你想要直接输入argv变量到你的程序中（避免在每次使用它时打sys.），那么你可以使用from sys import argv语句。如果你想要输入所有sys模块使用的名字，那么你可以使用from sys import *语句。这对于所有模块都适用。一般说来，应该避免使用from..import而使用import语句，因为这样可以使你的程序更加易读，也可以避免名称的冲突。</p>
+<h2 id="模块的-name"><a href="#模块的-name" class="headerlink" title="模块的_name_"></a>模块的_<em>name</em>_</h2><p>每个模块都有一个名称，在模块中可以通过语句来找出模块的名称。这在一个场合特别有用——就如前面所提到的，当一个模块被第一次输入的时候，这个模块的主块将被运行。假如我们只想在程序本身被使用的时候运行主块，而在它被别的模块输入的时候不运行主块，我们该怎么做呢？这可以通过模块的__name__属性完成。</p>
+<h3 id="使用模块的-name"><a href="#使用模块的-name" class="headerlink" title="使用模块的_name_"></a>使用模块的_<em>name</em>_</h3><p><strong>例8.2 使用模块的__name__</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: using_name.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;This program is being run by itself&#x27;</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;I am being imported from another module&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/using_name.py">code&#x2F;using_name.py</a>）</p>
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><figure class="highlight mizar"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ python using_name.py</span><br><span class="line">This program <span class="keyword">is</span> <span class="keyword">being</span> run <span class="keyword">by</span> itself</span><br><span class="line"></span><br><span class="line">$ python</span><br><span class="line">&gt;&gt;&gt; import using_name</span><br><span class="line">I am <span class="keyword">being</span> imported <span class="keyword">from</span> another module</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="它如何工作-1"><a href="#它如何工作-1" class="headerlink" title="它如何工作"></a>它如何工作</h3><p>每个Python模块都有它的__name_<em>，如果它是’__main</em>_’，这说明这个模块被用户单独运行，我们可以进行相应的恰当操作。</p>
+<h2 id="制造你自己的模块"><a href="#制造你自己的模块" class="headerlink" title="制造你自己的模块"></a>制造你自己的模块</h2><p>创建你自己的模块是十分简单的，你一直在这样做！每个Python程序也是一个模块。你已经确保它具有.py扩展名了。下面这个例子将会使它更加清晰。</p>
+<h3 id="创建你自己的模块"><a href="#创建你自己的模块" class="headerlink" title="创建你自己的模块"></a>创建你自己的模块</h3><p><strong>例8.3 如何创建你自己的模块</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: mymodule.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sayhi</span>():</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Hi, this is mymodule speaking.&#x27;</span></span><br><span class="line"></span><br><span class="line">version = <span class="string">&#x27;0.1&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># End of mymodule.py</span></span><br></pre></td></tr></table></figure>
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/mymodule.py">code&#x2F;mymodule.py</a>）</p>
+<p>上面是一个 模块 的例子。你已经看到，它与我们普通的Python程序相比并没有什么特别之处。我们接下来将看看如何在我们别的Python程序中使用这个模块。</p>
+<p>记住这个模块应该被放置在我们输入它的程序的同一个目录中，或者在sys.path所列目录之一。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: mymodule_demo.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> mymodule</span><br><span class="line"></span><br><span class="line">mymodule.sayhi()</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;Version&#x27;</span>, mymodule.version</span><br></pre></td></tr></table></figure>
+
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/mymodule_demo.py">code&#x2F;mymodule_demo.py</a>）</p>
+<h3 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ python mymodule_demo.py</span><br><span class="line">Hi, <span class="keyword">this</span> <span class="keyword">is</span> mymodule speaking.</span><br><span class="line">Version <span class="number">0.1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="它如何工作-2"><a href="#它如何工作-2" class="headerlink" title="它如何工作"></a>它如何工作</h3><p>注意我们使用了相同的点号来使用模块的成员。Python很好地重用了相同的记号来，使我们这些Python程序员不需要不断地学习新的方法。</p>
+<h3 id="from-import"><a href="#from-import" class="headerlink" title="from..import"></a>from..import</h3><p>下面是一个使用from..import语法的版本。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: mymodule_demo2.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> mymodule <span class="keyword">import</span> sayhi, version</span><br><span class="line"><span class="comment"># Alternative:</span></span><br><span class="line"><span class="comment"># from mymodule import *</span></span><br><span class="line"></span><br><span class="line">sayhi()</span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;Version&#x27;</span>, version</span><br></pre></td></tr></table></figure>
+
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/mymodule_demo2.py">code&#x2F;mymodule_demo2.py</a>）</p>
+<p>mymodule_demo2.py的输出与mymodule_demo.py完全相同。</p>
+<h2 id="dir-函数"><a href="#dir-函数" class="headerlink" title="dir()函数"></a>dir()函数</h2><p>你可以使用内建的dir函数来列出模块定义的标识符。标识符有函数、类和变量。</p>
+<p>当你为dir()提供一个模块名的时候，它返回模块定义的名称列表。如果不提供参数，它返回当前模块中定义的名称列表。</p>
+<h3 id="使用dir函数"><a href="#使用dir函数" class="headerlink" title="使用dir函数"></a>使用dir函数</h3><p><strong>例8.4 使用dir函数</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">$ python</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dir</span>(sys) <span class="comment"># get list of attributes for sys module</span></span><br><span class="line">[<span class="string">&#x27;__displayhook__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>, <span class="string">&#x27;__excepthook__&#x27;</span>, <span class="string">&#x27;__name__&#x27;</span>, <span class="string">&#x27;__stderr__&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;__stdin__&#x27;</span>, <span class="string">&#x27;__stdout__&#x27;</span>, <span class="string">&#x27;_getframe&#x27;</span>, <span class="string">&#x27;api_version&#x27;</span>, <span class="string">&#x27;argv&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;builtin_module_names&#x27;</span>, <span class="string">&#x27;byteorder&#x27;</span>, <span class="string">&#x27;call_tracing&#x27;</span>, <span class="string">&#x27;callstats&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;copyright&#x27;</span>, <span class="string">&#x27;displayhook&#x27;</span>, <span class="string">&#x27;exc_clear&#x27;</span>, <span class="string">&#x27;exc_info&#x27;</span>, <span class="string">&#x27;exc_type&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;excepthook&#x27;</span>, <span class="string">&#x27;exec_prefix&#x27;</span>, <span class="string">&#x27;executable&#x27;</span>, <span class="string">&#x27;exit&#x27;</span>, <span class="string">&#x27;getcheckinterval&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;getdefaultencoding&#x27;</span>, <span class="string">&#x27;getdlopenflags&#x27;</span>, <span class="string">&#x27;getfilesystemencoding&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;getrecursionlimit&#x27;</span>, <span class="string">&#x27;getrefcount&#x27;</span>, <span class="string">&#x27;hexversion&#x27;</span>, <span class="string">&#x27;maxint&#x27;</span>, <span class="string">&#x27;maxunicode&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;meta_path&#x27;</span>,<span class="string">&#x27;modules&#x27;</span>, <span class="string">&#x27;path&#x27;</span>, <span class="string">&#x27;path_hooks&#x27;</span>, <span class="string">&#x27;path_importer_cache&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;platform&#x27;</span>, <span class="string">&#x27;prefix&#x27;</span>, <span class="string">&#x27;ps1&#x27;</span>, <span class="string">&#x27;ps2&#x27;</span>, <span class="string">&#x27;setcheckinterval&#x27;</span>, <span class="string">&#x27;setdlopenflags&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;setprofile&#x27;</span>, <span class="string">&#x27;setrecursionlimit&#x27;</span>, <span class="string">&#x27;settrace&#x27;</span>, <span class="string">&#x27;stderr&#x27;</span>, <span class="string">&#x27;stdin&#x27;</span>, <span class="string">&#x27;stdout&#x27;</span>,</span><br><span class="line"><span class="string">&#x27;version&#x27;</span>, <span class="string">&#x27;version_info&#x27;</span>, <span class="string">&#x27;warnoptions&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dir</span>() <span class="comment"># get list of attributes for current module</span></span><br><span class="line">[<span class="string">&#x27;__builtins__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>, <span class="string">&#x27;__name__&#x27;</span>, <span class="string">&#x27;sys&#x27;</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="number">5</span> <span class="comment"># create a new variable &#x27;a&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dir</span>()</span><br><span class="line">[<span class="string">&#x27;__builtins__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>, <span class="string">&#x27;__name__&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;sys&#x27;</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> a <span class="comment"># delete/remove a name</span></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">dir</span>()</span><br><span class="line">[<span class="string">&#x27;__builtins__&#x27;</span>, <span class="string">&#x27;__doc__&#x27;</span>, <span class="string">&#x27;__name__&#x27;</span>, <span class="string">&#x27;sys&#x27;</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="它如何工作-3"><a href="#它如何工作-3" class="headerlink" title="它如何工作"></a>它如何工作</h3><p>首先，我们来看一下在输入的sys模块上使用dir。我们看到它包含一个庞大的属性列表。</p>
+<p>接下来，我们不给dir函数传递参数而使用它——默认地，它返回当前模块的属性列表。注意，输入的模块同样是列表的一部分。</p>
+<p>为了观察dir的作用，我们定义一个新的变量a并且给它赋一个值，然后检验dir，我们观察到在列表中增加了以上相同的值。我们使用del语句删除当前模块中的变量&#x2F;属性，这个变化再一次反映在dir的输出中。</p>
+<p>关于del的一点注释——这个语句在运行后被用来 删除 一个变量&#x2F;名称。在这个例子中，del a，你将无法再使用变量a——它就好像从来没有存在过一样。</p>
+<h2 id="概括"><a href="#概括" class="headerlink" title="概括"></a>概括</h2><p>模块的用处在于它能为你在别的程序中重用它提供的服务和功能。Python附带的标准库就是这样一组模块的例子。我们已经学习了如何使用这些模块以及如何创造我们自己的模块。</p>
+<p>接下来，我们将学习一些有趣的概念，它们称为数据结构。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>十贰
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/posts/53577.html" title="第8章 模块">http://example.com/posts/53577.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/42204.html" rel="prev" title="第9章 数据结构">
+      <i class="fa fa-chevron-left"></i> 第9章 数据结构
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/31260.html" rel="next" title="第7章 函数">
+      第7章 函数 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8sys%E6%A8%A1%E5%9D%97"><span class="nav-number">1.1.</span> <span class="nav-text">使用sys模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA"><span class="nav-number">1.2.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.3.</span> <span class="nav-text">它如何工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E8%8A%82%E7%BC%96%E8%AF%91%E7%9A%84-pyc%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">字节编译的.pyc文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#from-import%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.</span> <span class="nav-text">from..import语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E7%9A%84-name"><span class="nav-number">4.</span> <span class="nav-text">模块的_name_</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%A8%A1%E5%9D%97%E7%9A%84-name"><span class="nav-number">4.1.</span> <span class="nav-text">使用模块的_name_</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-1"><span class="nav-number">4.2.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C-1"><span class="nav-number">4.3.</span> <span class="nav-text">它如何工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%B6%E9%80%A0%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="nav-number">5.</span> <span class="nav-text">制造你自己的模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E6%A8%A1%E5%9D%97"><span class="nav-number">5.1.</span> <span class="nav-text">创建你自己的模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-2"><span class="nav-number">5.2.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C-2"><span class="nav-number">5.3.</span> <span class="nav-text">它如何工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#from-import"><span class="nav-number">5.4.</span> <span class="nav-text">from..import</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dir-%E5%87%BD%E6%95%B0"><span class="nav-number">6.</span> <span class="nav-text">dir()函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8dir%E5%87%BD%E6%95%B0"><span class="nav-number">6.1.</span> <span class="nav-text">使用dir函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C-3"><span class="nav-number">6.2.</span> <span class="nav-text">它如何工作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E6%8B%AC"><span class="nav-number">7.</span> <span class="nav-text">概括</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="十贰"
+      src="/images/writer.jpeg">
+  <p class="site-author-name" itemprop="name">十贰</p>
+  <div class="site-description" itemprop="description"><div id="binft"></div>  
+  <script>
+    var binft = function (r) {
+      function t() {
+        return b[Math.floor(Math.random() * b.length)]
+      }  
+      function e() {
+        return String.fromCharCode(94 * Math.random() + 33)
+      }
+      function n(r) {
+        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+          var l = document.createElement("span");
+          l.textContent = e(), l.style.color = t(), n.appendChild(l)
+        }
+        return n
+      }
+      function i() {
+        var t = o[c.skillI];
+        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+      }
+      var l = "",
+      o = ["𝖘𝖊𝖎𝖓 𝖟𝖚𝖒 𝖙𝖔𝖉𝖊", "向死而生，反求诸己","日日待明日,万事成蹉跎","丈夫志四海，万里犹比邻","还在看这里吗？","能不能别看了？","文章更精彩...."].map(function (r) {
+      return r + ""
+      }),
+      a = 2,
+      g = 1,
+      s = 5,
+      d = 75,
+      b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+      c = {
+        text: "",
+        prefixP: -s,
+        skillI: 0,
+        skillP: 0,
+        direction: "forward",
+        delay: a,
+        step: g
+      };
+      i()
+      };
+      binft(document.getElementById('binft'));
+  </script></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hehysh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hehysh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:work@hehysh.eu.org" title="E-Mail → mailto:work@hehysh.eu.org" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      传送门
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hehysh.github.io/catch-the-cat/" title="https:&#x2F;&#x2F;hehysh.github.io&#x2F;catch-the-cat&#x2F;" rel="noopener" target="_blank">抓猫小游戏</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wangzhi.hehysh.workers.dev/" title="https:&#x2F;&#x2F;wangzhi.hehysh.workers.dev&#x2F;" rel="noopener" target="_blank">亲爱的总站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十贰的小窝</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">117k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:46</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'hehysh@163.com';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://example.com/posts/53577.html',]
+      });
+      });
+  </script>
+
+</body>
+</html>

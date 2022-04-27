@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="我现在的这个博客”十贰的小窝”是2022年4月5日搭建的，到今天4月14日已经一个星期多了，也许没有人会注意这个博客其实在一个星期内发生了翻天覆地的变化，这其中也有许多辛酸的故事😂。接下来，我来大致按照时间线来讲一讲博客的改变，把他们汇总起来几乎可以变成一篇完整的博客美化教程喽🤩">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客创建一个星期来加入的有趣功能汇总">
+<meta property="og:url" content="http://example.com/posts/41921.html">
+<meta property="og:site_name" content="十贰的小窝">
+<meta property="og:description" content="我现在的这个博客”十贰的小窝”是2022年4月5日搭建的，到今天4月14日已经一个星期多了，也许没有人会注意这个博客其实在一个星期内发生了翻天覆地的变化，这其中也有许多辛酸的故事😂。接下来，我来大致按照时间线来讲一讲博客的改变，把他们汇总起来几乎可以变成一篇完整的博客美化教程喽🤩">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-14T13:24:58.000Z">
+<meta property="article:modified_time" content="2022-04-27T00:44:57.024Z">
+<meta property="article:author" content="十贰">
+<meta property="article:tag" content="hexo博客搭建">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/posts/41921.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>博客创建一个星期来加入的有趣功能汇总 | 十贰的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">十贰的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sec-site">
+
+    <a href="/sec-site/" rel="section"><i class="fa fa-link fa-fw"></i>分站</a>
+
+  </li>
+        <li class="menu-item menu-item-book">
+
+    <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/41921.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/writer.jpeg">
+      <meta itemprop="name" content="十贰">
+      <meta itemprop="description" content="十贰的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十贰的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          博客创建一个星期来加入的有趣功能汇总
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-14 13:24:58" itemprop="dateCreated datePublished" datetime="2022-04-14T13:24:58+00:00">2022-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-27 00:44:57" itemprop="dateModified" datetime="2022-04-27T00:44:57+00:00">2022-04-27</time>
+              </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>5.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我现在的这个博客”十贰的小窝”是2022年4月5日搭建的，到今天4月14日已经一个星期多了，也许没有人会注意这个博客其实在一个星期内发生了翻天覆地的变化，这其中也有许多辛酸的故事😂。<br>接下来，我来大致按照时间线来讲一讲博客的改变，把他们汇总起来几乎可以变成一篇完整的博客美化教程喽🤩</p>
+<span id="more"></span>
+<h1 id="改名"><a href="#改名" class="headerlink" title="改名"></a>改名</h1><p>名字是一个博客的灵魂，并不是说原来的名字不好听，而是我无意中又取了一个我自认为很好听又符合我胃口的名字。<br>在这里我也说一下怎么给博客改名，首先我们找到站点配置文件注意是站点配置文件<strong>不是</strong>主题配置文件，是在你的博客的根目录下的那个_config.yml<br>里面找到：</p>
+<figure class="highlight nestedtext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line">    <span class="attribute">title</span><span class="punctuation">:</span> <span class="string">？？？</span></span><br><span class="line">    <span class="attribute">subtitle</span><span class="punctuation">:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="attribute">description</span><span class="punctuation">:</span> <span class="string">&#x27;？？？&#x27;</span></span><br><span class="line">    <span class="attribute">keywords</span><span class="punctuation">:</span> <span class="string">？？？</span></span><br><span class="line">    <span class="attribute">author</span><span class="punctuation">:</span> <span class="string">？？？</span></span><br><span class="line">    <span class="attribute">language</span><span class="punctuation">:</span> <span class="string">zh-CN</span></span><br><span class="line">    <span class="attribute">timezone</span><span class="punctuation">:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注意了啊</strong>这里打？？？的都是视情况而定的，就是说每个人的这部分都不同，你可以自定义。好，我们看一下：<br>title是<strong>站点的名字</strong>，比如说我的博客叫十贰的小窝，那我就填成这样：title: 十贰的小窝<br><em><strong>一定要记得冒号后面加一个空格！！！</strong></em><br>subtitle是<strong>副标题</strong>，据说next主题填这个没什么用，我也没试过其他的主题，大家就试着填吧。<br>description是<strong>描述</strong>比如说我的描述是<code>𝖘𝖊𝖎𝖓 𝖟𝖚𝖒 𝖙𝖔𝖉𝖊</code>（*ps:这是花体字，内容是原版德语的”向死而生”*），那我就把它填到description后面。<br>keywords是<strong>关键词</strong>，他有什么用呢？我也不知道….因为我看不到实际的效果，我猜想应该是用来搭配搜索引擎食用的，但是我的博客还没接到搜索引擎上，所以我看不到实际效果😂。<br>author是<strong>作者</strong>，这个挺好理解的，比如说我是<code>十贰</code>，我就把十贰填到author的后面<br>language建议填zh-CN，会将博客转为中文。<br>最后的timezone我不知道什么意思，跳过了…</p>
+<h1 id="动态背景"><a href="#动态背景" class="headerlink" title="动态背景"></a>动态背景</h1><p>我已经<a target="_blank" rel="noopener" href="https://hehysh.github.io/%E7%BB%99%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF.html">讲过了哦</a></p>
+<h1 id="改字体"><a href="#改字体" class="headerlink" title="改字体"></a>改字体</h1><p><a target="_blank" rel="noopener" href="https://hehysh.github.io/%E6%9B%B4%E6%94%B9%E5%8D%9A%E5%AE%A2%E5%AD%97%E4%BD%93.html">也讲过了</a><br>(*这篇文章我只是指出了我在改字体中的一个错误，请到文章中<strong>二次跳转</strong>到另外一个大佬的文章内进行学习)</p>
+<h1 id="搜索栏"><a href="#搜索栏" class="headerlink" title="搜索栏"></a>搜索栏</h1><h2 id="安装教程"><a href="#安装教程" class="headerlink" title="安装教程"></a>安装教程</h2><p>我们首先来安装hexo博客搜索所需要的插件<br>在博客根目录执行命令<br><code>npm install hexo-generator-search --save</code><br>安装好了之后呢，我们就在博客的根目录下添加以下内容：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.<span class="keyword">xml</span></span><br><span class="line">  <span class="title">field</span>: post</span><br></pre></td></tr></table></figure>
+<h2 id="常见错误的解决"><a href="#常见错误的解决" class="headerlink" title="常见错误的解决"></a>常见错误的解决</h2><h3 id="本地搜索功能突然不能用了"><a href="#本地搜索功能突然不能用了" class="headerlink" title="本地搜索功能突然不能用了"></a>本地搜索功能突然不能用了</h3><p>什么叫突然不能用了？就是刚开始搜索功能可以用，到了后来突然抽风用不了了。<br>我们先来看一位老哥的问题描述</p>
+<blockquote>
+<p>通过上面的安装一般是可以实现本地搜索功能的，但是，我的问题出现了，刚刚开始的时候，我是在windows电脑上面配置hexo的博客的，但是，后面我迁移到了mac上，然后本地搜索功能突然就不能用了。</p>
+</blockquote>
+<p>一般本地功能不能使用了，有以下几个原因<br>1.search.xml文件中有不符合规则的字符，导致不能解析。<br>2.search.xml中有错误，导致不能解析。<br>3.search.xml文件中有编码不一致的问题，导致xml解析失败。<br>（ps:<em>以上的search.xml就是我们配置了本地搜索后，自动生成的xml格式的包含站点所有博客的文件，通过这个文件就可以进行本地搜索功能。</em>)<br>解决办法：<br><strong>第一步</strong><br>找到站点配置文件：</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.<span class="keyword">xml</span></span><br><span class="line">  <span class="title">field</span>: post</span><br></pre></td></tr></table></figure>
+<p>我们将将search.xml改为search.json格式。<br><strong>第二步</strong><br>找到你的博客主题的search.ejs模板文件，修改下面代码:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">$(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;lets go！&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;&lt;%= config.root %&gt;&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">searchFunc</span>(<span class="string">&quot;&lt;%= config.root %&gt;&quot;</span> + <span class="string">&quot;search.xml&quot;</span>, <span class="string">&#x27;searchInput&#x27;</span>, <span class="string">&#x27;searchResult&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">&#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>也是改为json格式的文件。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">$(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;lets go！&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;&lt;%= config.root %&gt;&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">searchFunc</span>(<span class="string">&quot;&lt;%= config.root %&gt;&quot;</span> + <span class="string">&quot;search.json&quot;</span>, <span class="string">&#x27;searchInput&#x27;</span>, <span class="string">&#x27;searchResult&#x27;</span>);</span></span><br><span class="line"><span class="language-javascript">&#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>最后一步</strong><br>修改你的search的本地js文件，比如我的matery主题的就是在js文件夹下的search.js文件。<br>对这个文件进行json解析的修改，最终就可以成功解决问题</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> searchFunc = <span class="keyword">function</span> (<span class="params">path, search_id, content_id</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&quot;test&quot;</span>);</span><br><span class="line">    <span class="comment">// &#x27;use strict&#x27;;</span></span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">        <span class="attr">url</span>: path,</span><br><span class="line">        <span class="attr">dataType</span>: <span class="string">&quot;json&quot;</span>,</span><br><span class="line">        <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">datas</span>) &#123;</span><br><span class="line">            <span class="comment">// get the contents from search data</span></span><br><span class="line">            <span class="comment">// var datas = $(&quot;entry&quot;, xmlResponse).map(function () &#123;</span></span><br><span class="line">            <span class="comment">//     return &#123;</span></span><br><span class="line">            <span class="comment">//         title: $(&quot;title&quot;, this).text(),</span></span><br><span class="line">            <span class="comment">//         content: $(&quot;content&quot;, this).text(),</span></span><br><span class="line">            <span class="comment">//         url: $(&quot;url&quot;, this).text()</span></span><br><span class="line">            <span class="comment">//     &#125;;</span></span><br><span class="line">            <span class="comment">// &#125;).get();</span></span><br><span class="line">            <span class="comment">// console.log(xmlResponse);</span></span><br><span class="line">            <span class="built_in">console</span>.<span class="built_in">log</span>(<span class="string">&quot;test!&quot;</span>);</span><br><span class="line">            </span><br><span class="line">            <span class="built_in">console</span>.<span class="built_in">log</span>(datas);</span><br><span class="line">            <span class="keyword">var</span> <span class="symbol">$i</span>nput = document.getElementById(search_id);</span><br><span class="line">            <span class="keyword">var</span> <span class="symbol">$resultCo</span>ntent = document.getElementById(content_id);</span><br><span class="line">            <span class="symbol">$i</span>nput.addEventListener(<span class="string">&#x27;input&#x27;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="keyword">var</span> str = <span class="string">&#x27;&lt;ul class=\&quot;search-result-list\&quot;&gt;&#x27;</span>;</span><br><span class="line">                <span class="keyword">var</span> keywords = this.value.<span class="built_in">trim</span>().toLowerCase().<span class="built_in">split</span>(<span class="regexp">/[\s\-]+/</span>);</span><br><span class="line">                <span class="symbol">$resultCo</span>ntent.innerHTML = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                <span class="keyword">if</span> (this.value.<span class="built_in">trim</span>().<span class="built_in">length</span> &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// perform local searching</span></span><br><span class="line">                datas.forEach(<span class="keyword">function</span> (<span class="params">data</span>) &#123;</span><br><span class="line">                    <span class="keyword">var</span> isMatch = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">var</span> content_index = [];</span><br><span class="line">                    <span class="keyword">var</span> data_title = data.title.<span class="built_in">trim</span>().toLowerCase();</span><br><span class="line">                    <span class="keyword">var</span> data_content = data.content.<span class="built_in">trim</span>().<span class="built_in">replace</span>(<span class="regexp">/&lt;[^&gt;]+&gt;/g</span>, <span class="string">&quot;&quot;</span>).toLowerCase();</span><br><span class="line">                    <span class="keyword">var</span> data_url = data.url;</span><br><span class="line">                    <span class="keyword">var</span> index_title = <span class="number">-1</span>;</span><br><span class="line">                    <span class="keyword">var</span> index_content = <span class="number">-1</span>;</span><br><span class="line">                    <span class="keyword">var</span> first_occur = <span class="number">-1</span>;</span><br><span class="line">                    <span class="comment">// only match artiles with not empty titles and contents</span></span><br><span class="line">                    <span class="keyword">if</span> (data_title != <span class="string">&#x27;&#x27;</span> &amp;&amp; data_content != <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">                        keywords.forEach(<span class="keyword">function</span> (<span class="params">keyword, i</span>) &#123;</span><br><span class="line">                            index_title = data_title.<span class="built_in">indexOf</span>(keyword);</span><br><span class="line">                            index_content = data_content.<span class="built_in">indexOf</span>(keyword);</span><br><span class="line">                            <span class="keyword">if</span> (index_title &lt; <span class="number">0</span> &amp;&amp; index_content &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                                isMatch = <span class="literal">false</span>;</span><br><span class="line">                            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                                <span class="keyword">if</span> (index_content &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                                    index_content = <span class="number">0</span>;</span><br><span class="line">                                &#125;</span><br><span class="line">                                <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</span><br><span class="line">                                    first_occur = index_content;</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">// show search results</span></span><br><span class="line">                    <span class="keyword">if</span> (isMatch) &#123;</span><br><span class="line">                        str += <span class="string">&quot;&lt;li&gt;&lt;a href=&#x27;&quot;</span> + data_url + <span class="string">&quot;&#x27; class=&#x27;search-result-title&#x27;&gt;&quot;</span> + data_title + <span class="string">&quot;&lt;/a&gt;&quot;</span>;</span><br><span class="line">                        <span class="keyword">var</span> content = data.content.<span class="built_in">trim</span>().<span class="built_in">replace</span>(<span class="regexp">/&lt;[^&gt;]+&gt;/g</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">                        <span class="keyword">if</span> (first_occur &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                            <span class="comment">// cut out 100 characters</span></span><br><span class="line">                            <span class="keyword">var</span> start = first_occur - <span class="number">20</span>;</span><br><span class="line">                            <span class="keyword">var</span> end = first_occur + <span class="number">80</span>;</span><br><span class="line">                            <span class="keyword">if</span> (start &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                                start = <span class="number">0</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                            <span class="keyword">if</span> (start == <span class="number">0</span>) &#123;</span><br><span class="line">                                end = <span class="number">100</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                            <span class="keyword">if</span> (end &gt; content.<span class="built_in">length</span>) &#123;</span><br><span class="line">                                end = content.<span class="built_in">length</span>;</span><br><span class="line">                            &#125;</span><br><span class="line">                            <span class="keyword">var</span> match_content = content.substr(start, end);</span><br><span class="line">                            <span class="comment">// highlight all keywords</span></span><br><span class="line">                            keywords.forEach(<span class="keyword">function</span> (<span class="params">keyword</span>) &#123;</span><br><span class="line">                                <span class="keyword">var</span> regS = <span class="keyword">new</span> RegExp(keyword, <span class="string">&quot;gi&quot;</span>);</span><br><span class="line">                                match_content = match_content.<span class="built_in">replace</span>(regS, <span class="string">&quot;&lt;em class=\&quot;search-keyword\&quot;&gt;&quot;</span> + keyword + <span class="string">&quot;&lt;/em&gt;&quot;</span>);</span><br><span class="line">                            &#125;);</span><br><span class="line">                            str += <span class="string">&quot;&lt;p class=\&quot;search-result\&quot;&gt;&quot;</span> + match_content + <span class="string">&quot;...&lt;/p&gt;&quot;</span></span><br><span class="line">                        &#125;</span><br><span class="line">                        str += <span class="string">&quot;&lt;/li&gt;&quot;</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                str += <span class="string">&quot;&lt;/ul&gt;&quot;</span>;</span><br><span class="line">                <span class="symbol">$resultCo</span>ntent.innerHTML = str;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="next主题更新"><a href="#next主题更新" class="headerlink" title="next主题更新"></a>next主题更新</h1><p>因为我当时创建博客时的一个疏忽，所以我不小心git clone了next主题的旧版本，为此，我又重新clone了一个新的，而且发现新的next主题集成了超多，超超超实用的功能，在这里列一下：</p>
+<h2 id="夜晚模式"><a href="#夜晚模式" class="headerlink" title="夜晚模式"></a>夜晚模式</h2><p>夜晚模式！！它支持自动跟随系统，我们只需要在主题配置文件里边搜索<br><code>darkmode</code>然后改成true</p>
+<h2 id="文章进度条"><a href="#文章进度条" class="headerlink" title="文章进度条"></a>文章进度条</h2><p>也是在主题配置文件里边，搜索，然后改成true</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>十贰
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/posts/41921.html" title="博客创建一个星期来加入的有趣功能汇总">http://example.com/posts/41921.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" rel="tag"><i class="fa fa-tag"></i> hexo博客搭建</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/5031.html" rel="prev" title="对博客密码的测试">
+      <i class="fa fa-chevron-left"></i> 对博客密码的测试
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/4057.html" rel="next" title="cloudflare免费制作镜像站">
+      cloudflare免费制作镜像站 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%B9%E5%90%8D"><span class="nav-number">1.</span> <span class="nav-text">改名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF"><span class="nav-number">2.</span> <span class="nav-text">动态背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%94%B9%E5%AD%97%E4%BD%93"><span class="nav-number">3.</span> <span class="nav-text">改字体</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E6%A0%8F"><span class="nav-number">4.</span> <span class="nav-text">搜索栏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B"><span class="nav-number">4.1.</span> <span class="nav-text">安装教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E7%9A%84%E8%A7%A3%E5%86%B3"><span class="nav-number">4.2.</span> <span class="nav-text">常见错误的解决</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%E7%AA%81%E7%84%B6%E4%B8%8D%E8%83%BD%E7%94%A8%E4%BA%86"><span class="nav-number">4.2.1.</span> <span class="nav-text">本地搜索功能突然不能用了</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%96%B0"><span class="nav-number">5.</span> <span class="nav-text">next主题更新</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9C%E6%99%9A%E6%A8%A1%E5%BC%8F"><span class="nav-number">5.1.</span> <span class="nav-text">夜晚模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E8%BF%9B%E5%BA%A6%E6%9D%A1"><span class="nav-number">5.2.</span> <span class="nav-text">文章进度条</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="十贰"
+      src="/images/writer.jpeg">
+  <p class="site-author-name" itemprop="name">十贰</p>
+  <div class="site-description" itemprop="description"><div id="binft"></div>  
+  <script>
+    var binft = function (r) {
+      function t() {
+        return b[Math.floor(Math.random() * b.length)]
+      }  
+      function e() {
+        return String.fromCharCode(94 * Math.random() + 33)
+      }
+      function n(r) {
+        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+          var l = document.createElement("span");
+          l.textContent = e(), l.style.color = t(), n.appendChild(l)
+        }
+        return n
+      }
+      function i() {
+        var t = o[c.skillI];
+        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+      }
+      var l = "",
+      o = ["𝖘𝖊𝖎𝖓 𝖟𝖚𝖒 𝖙𝖔𝖉𝖊", "向死而生，反求诸己","日日待明日,万事成蹉跎","丈夫志四海，万里犹比邻","还在看这里吗？","能不能别看了？","文章更精彩...."].map(function (r) {
+      return r + ""
+      }),
+      a = 2,
+      g = 1,
+      s = 5,
+      d = 75,
+      b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+      c = {
+        text: "",
+        prefixP: -s,
+        skillI: 0,
+        skillP: 0,
+        direction: "forward",
+        delay: a,
+        step: g
+      };
+      i()
+      };
+      binft(document.getElementById('binft'));
+  </script></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hehysh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hehysh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:work@hehysh.eu.org" title="E-Mail → mailto:work@hehysh.eu.org" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      传送门
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hehysh.github.io/catch-the-cat/" title="https:&#x2F;&#x2F;hehysh.github.io&#x2F;catch-the-cat&#x2F;" rel="noopener" target="_blank">抓猫小游戏</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wangzhi.hehysh.workers.dev/" title="https:&#x2F;&#x2F;wangzhi.hehysh.workers.dev&#x2F;" rel="noopener" target="_blank">亲爱的总站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十贰的小窝</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">117k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:46</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'hehysh@163.com';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://example.com/posts/41921.html',]
+      });
+      });
+  </script>
+
+</body>
+</html>

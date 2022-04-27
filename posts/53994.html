@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="如果你已经完全读完了这本书并且也实践着编写了很多程序，那么你一定已经能够非常熟练自如地使用Python了。你可能也已经编写了一些Python程序来尝试练习各种Python技能和特性。如果你还没有那样做的话，那么你一定要快点去实践。现在的问题是“接下来学习什么？”。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第16章 接下来学习什么？">
+<meta property="og:url" content="http://example.com/posts/53994.html">
+<meta property="og:site_name" content="十贰的小窝">
+<meta property="og:description" content="如果你已经完全读完了这本书并且也实践着编写了很多程序，那么你一定已经能够非常熟练自如地使用Python了。你可能也已经编写了一些Python程序来尝试练习各种Python技能和特性。如果你还没有那样做的话，那么你一定要快点去实践。现在的问题是“接下来学习什么？”。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-26T12:22:45.000Z">
+<meta property="article:modified_time" content="2022-04-27T00:41:52.956Z">
+<meta property="article:author" content="十贰">
+<meta property="article:tag" content="十贰">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/posts/53994.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>第16章 接下来学习什么？ | 十贰的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">十贰的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sec-site">
+
+    <a href="/sec-site/" rel="section"><i class="fa fa-link fa-fw"></i>分站</a>
+
+  </li>
+        <li class="menu-item menu-item-book">
+
+    <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/53994.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/writer.jpeg">
+      <meta itemprop="name" content="十贰">
+      <meta itemprop="description" content="十贰的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十贰的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第16章 接下来学习什么？
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-26 12:22:45" itemprop="dateCreated datePublished" datetime="2022-04-26T12:22:45+00:00">2022-04-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-27 00:41:52" itemprop="dateModified" datetime="2022-04-27T00:41:52+00:00">2022-04-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">简易python教程</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>如果你已经完全读完了这本书并且也实践着编写了很多程序，那么你一定已经能够非常熟练自如地使用Python了。你可能也已经编写了一些Python程序来尝试练习各种Python技能和特性。如果你还没有那样做的话，那么你一定要快点去实践。现在的问题是“接下来学习什么？”。</p>
+<span id="more"></span>
+<p>我会建议你先解决这样一个问题：创建你自己的命令行 地址簿 程序。在这个程序中，你可以添加、修改、删除和搜索你的联系人（朋友、家人和同事等等）以及它们的信息（诸如电子邮件地址和&#x2F;或电话号码）。这些详细信息应该被保存下来以便以后提取。</p>
+<p>思考一下我们到目前为止所学的各种东西的话，你会觉得这个问题其实相当简单。如果你仍然希望知道该从何处入手的话，那么这里也有一个提示。</p>
+<p>提示（其实你不应该阅读这个提示） 创建一个类来表示一个人的信息。使用字典储存每个人的对象，把他们的名字作为键。使用cPickle模块永久地把这些对象储存在你的硬盘上。使用字典内建的方法添加、删除和修改人员信息。</p>
+<p>一旦你完成了这个程序，你就可以说是一个Python程序员了。现在，请立即寄一封信给我感谢我为你提供了这本优秀的教材吧。是否告知我，如你所愿，但是我确实希望你能够告诉我。</p>
+<p>这里有一些继续你的Python之路的方法：</p>
+<h2 id="图形软件"><a href="#图形软件" class="headerlink" title="图形软件"></a>图形软件</h2><p>使用Python的GUI库——你需要使用这些库来用Python语言创建你自己的图形程序。使用GUI库和它们的Python绑定，你可以创建你自己的IrfanView、Kuickshow软件或者任何别的类似的东西。绑定让你能够使用Python语言编写程序，而使用的库本身是用C、C++或者别的语言编写的。</p>
+<p>有许多可供选择的使用Python的GUI：</p>
+<ul>
+<li><p>PyQt 这是Qt工具包的Python绑定。Qt工具包是构建KDE的基石。Qt，特别是配合Qt Designer和出色的Qt文档之后，它极其易用并且功能非常强大。你可以在Linux下免费使用它，但是如果你在Windows下使用它需要付费。使用PyQt，你可以在Linux&#x2F;Unix上开发免费的（GPL约定的）软件，而开发具产权的软件则需要付费。一个很好的PyQt资源是<a target="_blank" rel="noopener" href="http://www.opendocs.org/pyqt/">《使用Python语言的GUI编程：Qt版》</a>请查阅<a target="_blank" rel="noopener" href="http://www.riverbankcomputing.co.uk/pyqt/index.php">官方主页</a>以获取更多详情。</p>
+</li>
+<li><p>PyGTK 这是GTK+工具包的Python绑定。GTK+工具包是构建GNOME的基石。GTK+在使用上有很多怪癖的地方，不过一旦你习惯了，你可以非常快速地开发GUI应用程序。Glade图形界面设计器是必不可少的，而文档还有待改善。GTK+在Linux上工作得很好，而它的Windows接口还不完整。你可以使用GTK+开发免费和具有产权的软件。请查阅<a target="_blank" rel="noopener" href="http://www.pygtk.org/">官方主页</a>以获取更多详情。</p>
+</li>
+<li><p>wxPython 这是wxWidgets工具包的Python绑定。wxPython有与它相关的学习方法。它的可移植性极佳，可以在Linux、Windows、Mac甚至嵌入式平台上运行。有很多wxPython的IDE，其中包括GUI设计器以及如<a target="_blank" rel="noopener" href="http://spe.pycs.net/">SPE（Santi’s Python Editor）</a>和<a target="_blank" rel="noopener" href="http://wxglade.sourceforge.net/">wxGlade</a>那样的GUI开发器。你可以使用wxPython开发免费和具有产权的软件。请查阅<a target="_blank" rel="noopener" href="http://www.wxpython.org/">官方主页</a>以获取更多详情。</p>
+</li>
+<li><p>TkInter 这是现存最老的GUI工具包之一。如果你使用过IDLE，它就是一个TkInter程序。在<a target="_blank" rel="noopener" href="http://www.pythonware.com/library/tkinter/introduction/index.htm">PythonWare.org</a>上的TkInter文档是十分透彻的。TkInter具备可移植性，可以在Linux&#x2F;Unix和Windows下工作。重要的是，TkInter是标准Python发行版的一部分。</p>
+</li>
+</ul>
+<p>要获取更多选择，请参阅<a target="_blank" rel="noopener" href="http://www.python.org/cgi-bin/moinmoin/GuiProgramming">Python.org上的GUI编程wiki页</a>。</p>
+<h3 id="GUI工具概括"><a href="#GUI工具概括" class="headerlink" title="GUI工具概括"></a>GUI工具概括</h3><p>不幸的是，并没有单一的标准Python GUI工具。我建议你根据你的情况在上述工具中选择一个。首要考虑的因素是你是否愿意为GUI工具付费。其次考虑的是你是想让你的程序运行在Linux下、Windows下还是两者都要。第三个考虑因素根据你是Linux下的KDE用户还是GNOME用户而定。</p>
+<blockquote>
+<p><strong>未来的章节</strong></p>
+</blockquote>
+<blockquote>
+<p>我打算为本书编写一或两个关于GUI编程的章节。我可能会选择wxPython作为工具包。如果你想要表达你对这个主题的意见，请加入<a target="_blank" rel="noopener" href="http://lists.ibiblio.org/mailman/listinfo/byte-of-python">byte-of-python</a>邮件列表。在这个邮件列表中，读者会与我讨论如何改进本书。</p>
+</blockquote>
+<h2 id="探索更多内容"><a href="#探索更多内容" class="headerlink" title="探索更多内容"></a>探索更多内容</h2><ul>
+<li><p>Python标准库是一个丰富的库，在大多数时候，你可以在这个库中找到你所需的东西。这被称为Python的“功能齐全”理念。我强烈建议你在开始开发大型Python程序之前浏览一下<a target="_blank" rel="noopener" href="http://docs.python.org/">Python标准文档</a>。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.python.org/">Python.org</a>——Python编程语言的官方主页。你可以在上面找到Python语言和解释器的最新版本。另外还有各种邮件列表活跃地讨论Python的各方面内容。</p>
+</li>
+<li><p>comp.lang.python是讨论Python语言的世界性新闻组。你可以把你的疑惑和询问贴在这个新闻组上。可以使用<a target="_blank" rel="noopener" href="http://groups.google.com/groups?hl=en&lr=&ie=UTF-8&group=comp.lang.python">Google群</a>在线访问这个新闻组，或加入作为新闻组镜像的<a target="_blank" rel="noopener" href="http://mail.python.org/mailman/listinfo/python-list">邮件列表</a>。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://aspn.activestate.com/ASPN/Python/Cookbook/">《Python实用大全》</a>是一个极有价值的秘诀和技巧集合，它帮助你解决某些使用Python的问题。这是每个Python用户必读的一本书。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://gnosis.cx/publish/tech_index_cp.html">《迷人的Python》</a>是David Mertz编著的一系列优秀的Python相关文章。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.diveintopython.org/">《深入理解Python》</a>是给有经验的Python程序员的一本很优秀的书。如果你已经完整地阅读了本书，那么我强烈建议你接下来阅读《深入理解Python》。它覆盖了包括XML处理、单元测试和功能性编程在内的广泛的主题。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.jython.org/">Jython</a>是用Java语言实现的Python解释器。这意味着你可以用Python语言编写程序而同时使用Java库！Jython是一个稳定成熟的软件。如果你也是一个Java程序员，我强烈建议你尝试一下Jython。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.ironpython.com/">IronPython</a>是用C#语言实现的Python解释器，可以运行在.NET、Mono和DotGNU平台上。这意味着你可以用Python语言编写程序而使用.NET库以及其他由这三种平台提供的库！IronPython还只是一个前期alpha测试软件，现在还只适合用来进行试验。Jim Hugunin，IronPython的开发者，已经加入了微软公司，将在将来全力开发一个完整版本的IronPython。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://www.caddr.com/code/lython/">Lython</a>是Python语言的Lisp前段。它类似于普通的Lisp语言，会被直接编译为Python字节码，这意味着它能与我们普通的Python代码协同工作。</p>
+</li>
+<li><p>另外还有很多很多的Python资源。其中比较有趣的有<a target="_blank" rel="noopener" href="http://www.pythonware.com/daily/">Daily Python-URL</a>!，它使你保持与Python的最新进展同步。另外还有<a target="_blank" rel="noopener" href="http://www.vex.net/parnassus/">Vaults of Parnassus</a>、<a target="_blank" rel="noopener" href="http://www.onlamp.com/python/">ONLamp.com Python DevCenter</a>、<a target="_blank" rel="noopener" href="http://dirtsimple.org/">dirtSimple.org</a>、<a target="_blank" rel="noopener" href="http://pythonnotes.blogspot.com/">Python Notes</a>等等。</p>
+</li>
+</ul>
+<h2 id="概括"><a href="#概括" class="headerlink" title="概括"></a>概括</h2><p>现在，我们已经来到了本书的末尾，但是就如那句名言，这只是 开始的结束 ！你现在是一个满怀渴望的Python用户，毫无疑问你准备用Python解决许多问题。你可以使你的计算机自动地完成许多先前无法想象的工作或者编写你自己的游戏，以及更多别的什么东西。所以，请出发吧！</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>十贰
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/posts/53994.html" title="第16章 接下来学习什么？">http://example.com/posts/53994.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/42211.html" rel="prev" title="1附录 自由&开放源码软件">
+      <i class="fa fa-chevron-left"></i> 1附录 自由&开放源码软件
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/25462.html" rel="next" title="第15章 更多python第内容">
+      第15章 更多python第内容 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">图形软件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GUI%E5%B7%A5%E5%85%B7%E6%A6%82%E6%8B%AC"><span class="nav-number">1.1.</span> <span class="nav-text">GUI工具概括</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A2%E7%B4%A2%E6%9B%B4%E5%A4%9A%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">探索更多内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E6%8B%AC"><span class="nav-number">3.</span> <span class="nav-text">概括</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="十贰"
+      src="/images/writer.jpeg">
+  <p class="site-author-name" itemprop="name">十贰</p>
+  <div class="site-description" itemprop="description"><div id="binft"></div>  
+  <script>
+    var binft = function (r) {
+      function t() {
+        return b[Math.floor(Math.random() * b.length)]
+      }  
+      function e() {
+        return String.fromCharCode(94 * Math.random() + 33)
+      }
+      function n(r) {
+        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+          var l = document.createElement("span");
+          l.textContent = e(), l.style.color = t(), n.appendChild(l)
+        }
+        return n
+      }
+      function i() {
+        var t = o[c.skillI];
+        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+      }
+      var l = "",
+      o = ["𝖘𝖊𝖎𝖓 𝖟𝖚𝖒 𝖙𝖔𝖉𝖊", "向死而生，反求诸己","日日待明日,万事成蹉跎","丈夫志四海，万里犹比邻","还在看这里吗？","能不能别看了？","文章更精彩...."].map(function (r) {
+      return r + ""
+      }),
+      a = 2,
+      g = 1,
+      s = 5,
+      d = 75,
+      b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+      c = {
+        text: "",
+        prefixP: -s,
+        skillI: 0,
+        skillP: 0,
+        direction: "forward",
+        delay: a,
+        step: g
+      };
+      i()
+      };
+      binft(document.getElementById('binft'));
+  </script></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hehysh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hehysh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:work@hehysh.eu.org" title="E-Mail → mailto:work@hehysh.eu.org" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      传送门
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hehysh.github.io/catch-the-cat/" title="https:&#x2F;&#x2F;hehysh.github.io&#x2F;catch-the-cat&#x2F;" rel="noopener" target="_blank">抓猫小游戏</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wangzhi.hehysh.workers.dev/" title="https:&#x2F;&#x2F;wangzhi.hehysh.workers.dev&#x2F;" rel="noopener" target="_blank">亲爱的总站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十贰的小窝</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">117k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:46</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'hehysh@163.com';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://example.com/posts/53994.html',]
+      });
+      });
+  </script>
+
+</body>
+</html>

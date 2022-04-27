@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"default"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="我们已经研究了Python语言的众多内容，现在我们将来学习一下怎么把这些内容结合起来。我们将设计编写一个能够 做 一些确实有用的事情的程序。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第10章-解决问题————编写第一个python脚本">
+<meta property="og:url" content="http://example.com/posts/34883.html">
+<meta property="og:site_name" content="十贰的小窝">
+<meta property="og:description" content="我们已经研究了Python语言的众多内容，现在我们将来学习一下怎么把这些内容结合起来。我们将设计编写一个能够 做 一些确实有用的事情的程序。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-26T12:22:50.000Z">
+<meta property="article:modified_time" content="2022-04-27T00:41:52.956Z">
+<meta property="article:author" content="十贰">
+<meta property="article:tag" content="十贰">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/posts/34883.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>第10章-解决问题————编写第一个python脚本 | 十贰的小窝</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">十贰的小窝</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于我</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sec-site">
+
+    <a href="/sec-site/" rel="section"><i class="fa fa-link fa-fw"></i>分站</a>
+
+  </li>
+        <li class="menu-item menu-item-book">
+
+    <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" rel="section"><i class="fa fa-book fa-fw"></i>书籍</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/34883.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/writer.jpeg">
+      <meta itemprop="name" content="十贰">
+      <meta itemprop="description" content="十贰的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="十贰的小窝">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第10章-解决问题————编写第一个python脚本
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-26 12:22:50" itemprop="dateCreated datePublished" datetime="2022-04-26T12:22:50+00:00">2022-04-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-27 00:41:52" itemprop="dateModified" datetime="2022-04-27T00:41:52+00:00">2022-04-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%80%E6%98%93python%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">简易python教程</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>9.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>9 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我们已经研究了Python语言的众多内容，现在我们将来学习一下怎么把这些内容结合起来。我们将设计编写一个能够 做 一些确实有用的事情的程序。</p>
+<span id="more"></span>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>我提出的问题是： 我想要一个可以为我的所有重要文件创建备份的程序。</p>
+<p>尽管这是一个简单的问题，但是问题本身并没有给我们足够的信息来解决它。进一步的分析是必需的。例如，我们如何确定该备份哪些文件？备份保存在哪里？我们怎么样存储备份？</p>
+<p>在恰当地分析了这个问题之后，我们开始设计我们的程序。我们列了一张表，表示我们的程序应该如何工作。对于这个问题，我已经创建了下面这个列表以说明 我 如何让它工作。如果是你设计的话，你可能不会这样来解决问题——每个人都有其做事的方法，这很正常。</p>
+<ol>
+<li>需要备份的文件和目录由一个列表指定。</li>
+<li>备份应该保存在主备份目录中。</li>
+<li>文件备份成一个zip文件。</li>
+<li>zip存档的名称是当前的日期和时间。</li>
+<li>我们使用标准的zip命令，它通常默认地随Linux&#x2F;Unix发行版提供。Windows用户可以使用Info-Zip程序。注意你可以使用任何地存档命令，只要它有命令行界面就可以了，那样的话我们可以从我们的脚本中传递参数给它。</li>
+</ol>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>当我们基本完成程序的设计，我们就可以编写代码了，它是对我们的解决方案的实施。</p>
+<h3 id="版本一"><a href="#版本一" class="headerlink" title="版本一"></a>版本一</h3><p><strong>例10.1 备份脚本——版本一</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: backup_ver1.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. The files and directories to be backed up are specified in a list.</span></span><br><span class="line">source = [<span class="string">&#x27;/home/swaroop/byte&#x27;</span>, <span class="string">&#x27;/home/swaroop/bin&#x27;</span>]</span><br><span class="line"><span class="comment"># If you are using Windows, use source = [r&#x27;C:\Documents&#x27;, r&#x27;D:\Work&#x27;] or something like that</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. The backup must be stored in a main backup directory</span></span><br><span class="line">target_dir = <span class="string">&#x27;/mnt/e/backup/&#x27;</span> <span class="comment"># Remember to change this to what you will be using</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. The files are backed up into a zip file.</span></span><br><span class="line"><span class="comment"># 4. The name of the zip archive is the current date and time</span></span><br><span class="line">target = target_dir + time.strftime(<span class="string">&#x27;%Y%m%d%H%M%S&#x27;</span>) + <span class="string">&#x27;.zip&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. We use the zip command (in Unix/Linux) to put the files in a zip archive</span></span><br><span class="line">zip_command = <span class="string">&quot;zip -qr &#x27;%s&#x27; %s&quot;</span> % (target, <span class="string">&#x27; &#x27;</span>.join(source))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the backup</span></span><br><span class="line"><span class="keyword">if</span> os.system(zip_command) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Successful backup to&#x27;</span>, target</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Backup FAILED&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/backup_ver1.py">code&#x2F;backup_ver1.py</a>）</p>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python backup_ver1.py</span><br><span class="line"><span class="keyword">Successful </span>backup to /mnt/e/backup/20041208073244.zip</span><br></pre></td></tr></table></figure>
+
+<p>现在，我们已经处于测试环节了，在这个环节，我们测试我们的程序是否正确工作。如果它与我们所期望的不一样，我们就得调试我们的程序，即消除程序中的 瑕疵 （错误）。</p>
+<h3 id="它如何工作"><a href="#它如何工作" class="headerlink" title="它如何工作"></a>它如何工作</h3><p>接下来你将看到我们如何把 设计 一步一步地转换为 代码 。</p>
+<p>我们使用了os和time模块，所以我们输入它们。然后，我们在source列表中指定需要备份的文件和目录。目标目录是我们想要存储备份文件的地方，它由target_dir变量指定。zip归档的名称是目前的日期和时间，我们使用time.strftime()函数获得。它还包括.zip扩展名，将被保存在target_dir目录中。</p>
+<p>time.strftime()函数需要我们在上面的程序中使用的那种定制。%Y会被无世纪的年份所替代。%m会被01到12之间的一个十进制月份数替代，其他依次类推。这些定制的详细情况可以在《Python参考手册》中获得。《Python参考手册》包含在你的Python发行版中。注意这些定制与用于print语句的定制（%后跟一个元组）类似（但不完全相同）</p>
+<p>我们使用加法操作符来 级连 字符串，即把两个字符串连接在一起返回一个新的字符串。通过这种方式，我们创建了目标zip文件的名称。接着我们创建了zip_command字符串，它包含我们将要执行的命令。你可以在shell（Linux终端或者DOS提示符）中运行它，以检验它是否工作。</p>
+<p>zip命令有一些选项和参数。-q选项用来表示zip命令安静地工作。-r选项表示zip命令对目录递归地工作，即它包括子目录以及子目录中的文件。两个选项可以组合成缩写形式-qr。选项后面跟着待创建的zip归档的名称，然后再是待备份的文件和目录列表。我们使用已经学习过的字符串join方法把source列表转换为字符串。</p>
+<p>最后，我们使用os.system函数 运行 命令，利用这个函数就好像在 系统 中运行命令一样。即在shell中运行命令——如果命令成功运行，它返回0，否则它返回错误号。</p>
+<p>根据命令的输出，我们打印对应的消息，显示备份是否创建成功。好了，就是这样我们已经创建了一个脚本来对我们的重要文件做备份！</p>
+<blockquote>
+<p><strong>给Windows用户的注释</strong> </p>
+</blockquote>
+<blockquote>
+<p>你可以把source列表和target目录设置成任何文件和目录名，但是在Windows中你得小心一些。问题是Windows把反斜杠（\）作为目录分隔符，而Python用反斜杠表示转义符！<br>所以，你得使用转义符来表示反斜杠本身或者使用自然字符串。例如，使用’C:\Documents’或r’C:\Documents’而不是’C:\Documents’——你在使用一个不知名的转义符\D！</p>
+</blockquote>
+<p>现在我们已经有了一个可以工作的备份脚本，我们可以在任何我们想要建立文件备份的时候使用它。建议Linux&#x2F;Unix用户使用前面介绍的可执行的方法，这样就可以在任何地方任何时候运行备份脚本了。这被称为软件的实施环节或开发环节。</p>
+<p>上面的程序可以正确工作，但是（通常）第一个程序并不是与你所期望的完全一样。例如，可能有些问题你没有设计恰当，又或者你在输入代码的时候发生了一点错误，等等。正常情况下，你应该回到设计环节或者调试程序。</p>
+<h3 id="版本二"><a href="#版本二" class="headerlink" title="版本二"></a>版本二</h3><p>第一个版本的脚本可以工作。然而，我们可以对它做些优化以便让它在我们的日常工作中变得更好。这称为软件的维护环节。</p>
+<p>我认为优化之一是采用更好的文件名机制——使用 时间 作为文件名，而当前的 日期 作为目录名，存放在主备份目录中。这样做的一个优势是你的备份会以等级结构存储，因此它就更加容易管理了。另外一个优势是文件名的长度也可以变短。还有一个优势是采用各自独立的文件夹可以帮助你方便地检验你是否在每一天创建了备份，因为只有在你创建了备份，才会出现那天的目录。</p>
+<p><strong>例10.2 备份脚本——版本二</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: backup_ver2.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. The files and directories to be backed up are specified in a list.</span></span><br><span class="line">source = [<span class="string">&#x27;/home/swaroop/byte&#x27;</span>, <span class="string">&#x27;/home/swaroop/bin&#x27;</span>]</span><br><span class="line"><span class="comment"># If you are using Windows, use source = [r&#x27;C:\Documents&#x27;, r&#x27;D:\Work&#x27;] or something like that</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. The backup must be stored in a main backup directory</span></span><br><span class="line">target_dir = <span class="string">&#x27;/mnt/e/backup/&#x27;</span> <span class="comment"># Remember to change this to what you will be using</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. The files are backed up into a zip file.</span></span><br><span class="line"><span class="comment"># 4. The current day is the name of the subdirectory in the main directory</span></span><br><span class="line">today = target_dir + time.strftime(<span class="string">&#x27;%Y%m%d&#x27;</span>)</span><br><span class="line"><span class="comment"># The current time is the name of the zip archive</span></span><br><span class="line">now = time.strftime(<span class="string">&#x27;%H%M%S&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create the subdirectory if it isn&#x27;t already there</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(today):</span><br><span class="line">    os.mkdir(today) <span class="comment"># make directory</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Successfully created directory&#x27;</span>, today</span><br><span class="line"></span><br><span class="line"><span class="comment"># The name of the zip file</span></span><br><span class="line">target = today + os.sep + now + <span class="string">&#x27;.zip&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. We use the zip command (in Unix/Linux) to put the files in a zip archive</span></span><br><span class="line">zip_command = <span class="string">&quot;zip -qr &#x27;%s&#x27; %s&quot;</span> % (target, <span class="string">&#x27; &#x27;</span>.join(source))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the backup</span></span><br><span class="line"><span class="keyword">if</span> os.system(zip_command) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Successful backup to&#x27;</span>, target</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Backup FAILED&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/backup_ver2.py">code&#x2F;backup_ver2.py</a>）</p>
+<h3 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h3><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ python backup_ver2.py</span><br><span class="line">Successfully created directory /mnt/e/backup/20041208</span><br><span class="line"><span class="keyword">Successful </span>backup to /mnt/e/backup/20041208/080020.zip</span><br><span class="line"></span><br><span class="line">$ python backup_ver2.py</span><br><span class="line"><span class="keyword">Successful </span>backup to /mnt/e/backup/20041208/080428.zip</span><br></pre></td></tr></table></figure>
+
+<h3 id="它如何工作-1"><a href="#它如何工作-1" class="headerlink" title="它如何工作"></a>它如何工作</h3><p>两个程序的大部分是相同的。改变的部分主要是使用os.exists函数检验在主备份目录中是否有以当前日期作为名称的目录。如果没有，我们使用os.mkdir函数创建。</p>
+<p>注意os.sep变量的用法——这会根据你的操作系统给出目录分隔符，即在Linux、Unix下它是’&#x2F;‘，在Windows下它是’\‘，而在Mac OS下它是’:’。使用os.sep而非直接使用字符，会使我们的程序具有移植性，可以在上述这些系统下工作。</p>
+<h3 id="版本三"><a href="#版本三" class="headerlink" title="版本三"></a>版本三</h3><p>第二个版本在我做较多备份的时候还工作得不错，但是如果有极多备份的时候，我发现要区分每个备份是干什么的，会变得十分困难！例如，我可能对程序或者演讲稿做了一些重要的改变，于是我想要把这些改变与zip归档的名称联系起来。这可以通过在zip归档名上附带一个用户提供的注释来方便地实现。</p>
+<p><strong>例10.3 备份脚本——版本三（不工作！）</strong> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: backup_ver3.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. The files and directories to be backed up are specified in a list.</span></span><br><span class="line">source = [<span class="string">&#x27;/home/swaroop/byte&#x27;</span>, <span class="string">&#x27;/home/swaroop/bin&#x27;</span>]</span><br><span class="line"><span class="comment"># If you are using Windows, use source = [r&#x27;C:\Documents&#x27;, r&#x27;D:\Work&#x27;] or something like that</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. The backup must be stored in a main backup directory</span></span><br><span class="line">target_dir = <span class="string">&#x27;/mnt/e/backup/&#x27;</span> <span class="comment"># Remember to change this to what you will be using</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. The files are backed up into a zip file.</span></span><br><span class="line"><span class="comment"># 4. The current day is the name of the subdirectory in the main directory</span></span><br><span class="line">today = target_dir + time.strftime(<span class="string">&#x27;%Y%m%d&#x27;</span>)</span><br><span class="line"><span class="comment"># The current time is the name of the zip archive</span></span><br><span class="line">now = time.strftime(<span class="string">&#x27;%H%M%S&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Take a comment from the user to create the name of the zip file</span></span><br><span class="line">comment = raw_input(<span class="string">&#x27;Enter a comment --&gt; &#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(comment) == <span class="number">0</span>: <span class="comment"># check if a comment was entered</span></span><br><span class="line">    target = today + os.sep + now + <span class="string">&#x27;.zip&#x27;</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    target = today + os.sep + now + <span class="string">&#x27;_&#x27;</span> +</span><br><span class="line">        comment.replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;_&#x27;</span>) + <span class="string">&#x27;.zip&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create the subdirectory if it isn&#x27;t already there</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(today):</span><br><span class="line">    os.mkdir(today) <span class="comment"># make directory</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Successfully created directory&#x27;</span>, today</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. We use the zip command (in Unix/Linux) to put the files in a zip archive</span></span><br><span class="line">zip_command = <span class="string">&quot;zip -qr &#x27;%s&#x27; %s&quot;</span> % (target, <span class="string">&#x27; &#x27;</span>.join(source))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the backup</span></span><br><span class="line"><span class="keyword">if</span> os.system(zip_command) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Successful backup to&#x27;</span>, target</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Backup FAILED&#x27;</span>    </span><br></pre></td></tr></table></figure>
+
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/backup_ver3.py">code&#x2F;backup_ver3.py</a>）</p>
+<h3 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">python</span> backup_ver3.<span class="keyword">py</span></span><br><span class="line">File <span class="string">&quot;backup_ver3.py&quot;</span>, <span class="built_in">line</span> <span class="number">25</span></span><br><span class="line">target = today + os.sep + now + <span class="string">&#x27;_&#x27;</span> +</span><br><span class="line">                                ^</span><br><span class="line">SyntaxError: invalid <span class="keyword">syntax</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="它如何（不）工作"><a href="#它如何（不）工作" class="headerlink" title="它如何（不）工作"></a>它如何（不）工作</h3><p>这个程序不工作！Python说有一个语法错误，这意味着脚本不满足Python可以识别的结构。当我们观察Python给出的错误的时候，它也告诉了我们它检测出错误的位置。所以我们从那行开始 调试 我们的程序。</p>
+<p>通过仔细的观察，我们发现一个逻辑行被分成了两个物理行，但是我们并没有指明这两个物理行属于同一逻辑行。基本上，Python发现加法操作符（＋）在那一逻辑行没有任何操作数，因此它不知道该如何继续。记住我们可以使用物理行尾的反斜杠来表示逻辑行在下一物理行继续。所以，我们修正了程序。这被称为修订。</p>
+<h3 id="版本四"><a href="#版本四" class="headerlink" title="版本四"></a>版本四</h3><p><strong>例10.4 备份脚本——版本四</strong></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># Filename: backup_ver4.py</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. The files and directories to be backed up are specified in a list.</span></span><br><span class="line">source = [<span class="string">&#x27;/home/swaroop/byte&#x27;</span>, <span class="string">&#x27;/home/swaroop/bin&#x27;</span>]</span><br><span class="line"><span class="comment"># If you are using Windows, use source = [r&#x27;C:\Documents&#x27;, r&#x27;D:\Work&#x27;] or something like that</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. The backup must be stored in a main backup directory</span></span><br><span class="line">target_dir = <span class="string">&#x27;/mnt/e/backup/&#x27;</span> <span class="comment"># Remember to change this to what you will be using</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. The files are backed up into a zip file.</span></span><br><span class="line"><span class="comment"># 4. The current day is the name of the subdirectory in the main directory</span></span><br><span class="line">today = target_dir + time.strftime(<span class="string">&#x27;%Y%m%d&#x27;</span>)</span><br><span class="line"><span class="comment"># The current time is the name of the zip archive</span></span><br><span class="line">now = time.strftime(<span class="string">&#x27;%H%M%S&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Take a comment from the user to create the name of the zip file</span></span><br><span class="line">comment = raw_input(<span class="string">&#x27;Enter a comment --&gt; &#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(comment) == <span class="number">0</span>: <span class="comment"># check if a comment was entered</span></span><br><span class="line">    target = today + os.sep + now + <span class="string">&#x27;.zip&#x27;</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    target = today + os.sep + now + <span class="string">&#x27;_&#x27;</span> + \</span><br><span class="line">        comment.replace(<span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;_&#x27;</span>) + <span class="string">&#x27;.zip&#x27;</span></span><br><span class="line">    <span class="comment"># Notice the backslash!</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create the subdirectory if it isn&#x27;t already there</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(today):</span><br><span class="line">    os.mkdir(today) <span class="comment"># make directory</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Successfully created directory&#x27;</span>, today</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. We use the zip command (in Unix/Linux) to put the files in a zip archive</span></span><br><span class="line">zip_command = <span class="string">&quot;zip -qr &#x27;%s&#x27; %s&quot;</span> % (target, <span class="string">&#x27; &#x27;</span>.join(source))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the backup</span></span><br><span class="line"><span class="keyword">if</span> os.system(zip_command) == <span class="number">0</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Successful backup to&#x27;</span>, target</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Backup FAILED&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>（源文件：<a target="_blank" rel="noopener" href="http://woodpecker.org.cn/abyteofpython_cn/chinese/code/backup_ver4.py">code&#x2F;backup_ver4.py</a>）</p>
+<h3 id="输出-3"><a href="#输出-3" class="headerlink" title="输出"></a>输出</h3><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ python backup_ver4.py</span><br><span class="line">Enter a comment --&gt; added new examples</span><br><span class="line"><span class="keyword">Successful </span>backup to /mnt/e/backup/20041208/082156_added_new_examples.zip</span><br><span class="line"></span><br><span class="line">$ python backup_ver4.py</span><br><span class="line">Enter a comment --&gt;</span><br><span class="line"><span class="keyword">Successful </span>backup to /mnt/e/backup/20041208/082316.zip</span><br></pre></td></tr></table></figure>
+
+<h3 id="它如何工作-2"><a href="#它如何工作-2" class="headerlink" title="它如何工作"></a>它如何工作</h3><p>这个程序现在工作了！让我们看一下版本三中作出的实质性改进。我们使用raw_input函数得到用户的注释，然后通过len函数找出输入的长度以检验用户是否确实输入了什么东西。如果用户只是按了回车（比如这只是一个惯例备份，没有做什么特别的修改），那么我们就如之前那样继续操作。</p>
+<p>然而，如果提供了注释，那么它会被附加到zip归档名，就在.zip扩展名之前。注意我们把注释中的空格替换成下划线——这是因为处理这样的文件名要容易得多。</p>
+<h3 id="进一步优化"><a href="#进一步优化" class="headerlink" title="进一步优化"></a>进一步优化</h3><p>对于大多数用户来说，第四个版本是一个满意的工作脚本了，但是它仍然有进一步改进的空间。比如，你可以在程序中包含 交互 程度——你可以用-v选项来使你的程序更具交互性。</p>
+<p>另一个可能的改进是使文件和目录能够通过命令行直接传递给脚本。我们可以通过sys.argv列表来获取它们，然后我们可以使用list类提供的extend方法把它们加到source列表中去。</p>
+<p>我还希望有的一个优化是使用tar命令替代zip命令。这样做的一个优势是在你结合使用tar和gzip命令的时候，备份会更快更小。如果你想要在Windows中使用这些归档，WinZip也能方便地处理这些.tar.gz文件。tar命令在大多数Linux&#x2F;Unix系统中都是默认可用的。Windows用户也可以下载安装它。</p>
+<p>命令字符串现在将称为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar = <span class="string">&#x27;tar -cvzf %s %s -X /home/swaroop/excludes.txt&#x27;</span> % (target, <span class="string">&#x27; &#x27;</span>.join(srcdir))</span><br></pre></td></tr></table></figure>
+
+<p>选项解释如下：</p>
+<ul>
+<li><p>-c表示创建一个归档。</p>
+</li>
+<li><p>-v表示交互，即命令更具交互性。</p>
+</li>
+<li><p>-z表示使用gzip滤波器。</p>
+</li>
+<li><p>-f表示强迫创建归档，即如果已经有一个同名文件，它会被替换。</p>
+</li>
+<li><p>-X表示含在指定文件名列表中的文件会被排除在备份之外。例如，你可以在文件中指定*<del>，从而不让备份包括所有以</del>结尾的文件。</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>重要</strong></p>
+</blockquote>
+<blockquote>
+<p>最理想的创建这些归档的方法是分别使用zipfile和tarfile。它们是Python标准库的一部分，可以供你使用。使用这些库就避免了使用os.system这个不推荐使用的函数，它容易引发严重的错误。<br>然而，我在本节中使用os.system的方法来创建备份，这纯粹是为了教学的需要。这样的话，例子就可以简单到让每个人都能够理解，同时也已经足够用了。</p>
+</blockquote>
+<h2 id="软件开发过程"><a href="#软件开发过程" class="headerlink" title="软件开发过程"></a>软件开发过程</h2><p>现在，我们已经走过了编写一个软件的各个环节。这些环节可以概括如下：</p>
+<ol>
+<li>什么（分析）</li>
+<li>如何（设计）</li>
+<li>编写（实施）</li>
+<li>测试（测试与调试）</li>
+<li>使用（实施或开发）</li>
+<li>维护（优化）</li>
+</ol>
+<blockquote>
+<p><strong>重要</strong></p>
+</blockquote>
+<blockquote>
+<p>我们创建这个备份脚本的过程是编写程序的推荐方法——进行分析与设计。开始时实施一个简单的版本。对它进行测试与调试。使用它以确信它如预期那样地工作。再增加任何你想要的特性，根据需要一次次重复这个编写－测试－使用的周期。记住“软件是长出来的，而不是建造的”。</p>
+</blockquote>
+<h2 id="概括"><a href="#概括" class="headerlink" title="概括"></a>概括</h2><p>我们已经学习如何创建我们自己的Python程序&#x2F;脚本，以及在编写这个程序中所设计到的不同的状态。你可以发现它们在创建你自己的程序的时候会十分有用，让你对Python以及解决问题都变得更加得心应手。</p>
+<p>接下来，我们将讨论面向对象的编程。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>十贰
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/posts/34883.html" title="第10章-解决问题————编写第一个python脚本">http://example.com/posts/34883.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/61783.html" rel="prev" title="第11章 面向对象的编程">
+      <i class="fa fa-chevron-left"></i> 第11章 面向对象的编程
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/42204.html" rel="next" title="第9章 数据结构">
+      第9章 数据结构 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E4%B8%80"><span class="nav-number">2.1.</span> <span class="nav-text">版本一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA"><span class="nav-number">2.2.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.3.</span> <span class="nav-text">它如何工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E4%BA%8C"><span class="nav-number">2.4.</span> <span class="nav-text">版本二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-1"><span class="nav-number">2.5.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C-1"><span class="nav-number">2.6.</span> <span class="nav-text">它如何工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E4%B8%89"><span class="nav-number">2.7.</span> <span class="nav-text">版本三</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-2"><span class="nav-number">2.8.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%EF%BC%88%E4%B8%8D%EF%BC%89%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.9.</span> <span class="nav-text">它如何（不）工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%88%E6%9C%AC%E5%9B%9B"><span class="nav-number">2.10.</span> <span class="nav-text">版本四</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA-3"><span class="nav-number">2.11.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%83%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C-2"><span class="nav-number">2.12.</span> <span class="nav-text">它如何工作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BC%98%E5%8C%96"><span class="nav-number">2.13.</span> <span class="nav-text">进一步优化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">软件开发过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E6%8B%AC"><span class="nav-number">4.</span> <span class="nav-text">概括</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="十贰"
+      src="/images/writer.jpeg">
+  <p class="site-author-name" itemprop="name">十贰</p>
+  <div class="site-description" itemprop="description"><div id="binft"></div>  
+  <script>
+    var binft = function (r) {
+      function t() {
+        return b[Math.floor(Math.random() * b.length)]
+      }  
+      function e() {
+        return String.fromCharCode(94 * Math.random() + 33)
+      }
+      function n(r) {
+        for (var n = document.createDocumentFragment(), i = 0; r > i; i++) {
+          var l = document.createElement("span");
+          l.textContent = e(), l.style.color = t(), n.appendChild(l)
+        }
+        return n
+      }
+      function i() {
+        var t = o[c.skillI];
+        c.step ? c.step-- : (c.step = g, c.prefixP < l.length ? (c.prefixP >= 0 && (c.text += l[c.prefixP]), c.prefixP++) : "forward" === c.direction ? c.skillP < t.length ? (c.text += t[c.skillP], c.skillP++) : c.delay ? c.delay-- : (c.direction = "backward", c.delay = a) : c.skillP > 0 ? (c.text = c.text.slice(0, -1), c.skillP--) : (c.skillI = (c.skillI + 1) % o.length, c.direction = "forward")), r.textContent = c.text, r.appendChild(n(c.prefixP < l.length ? Math.min(s, s + c.prefixP) : Math.min(s, t.length - c.skillP))), setTimeout(i, d)
+      }
+      var l = "",
+      o = ["𝖘𝖊𝖎𝖓 𝖟𝖚𝖒 𝖙𝖔𝖉𝖊", "向死而生，反求诸己","日日待明日,万事成蹉跎","丈夫志四海，万里犹比邻","还在看这里吗？","能不能别看了？","文章更精彩...."].map(function (r) {
+      return r + ""
+      }),
+      a = 2,
+      g = 1,
+      s = 5,
+      d = 75,
+      b = ["rgb(110,64,170)", "rgb(150,61,179)", "rgb(191,60,175)", "rgb(228,65,157)", "rgb(254,75,131)", "rgb(255,94,99)", "rgb(255,120,71)", "rgb(251,150,51)", "rgb(226,183,47)", "rgb(198,214,60)", "rgb(175,240,91)", "rgb(127,246,88)", "rgb(82,246,103)", "rgb(48,239,130)", "rgb(29,223,163)", "rgb(26,199,194)", "rgb(35,171,216)", "rgb(54,140,225)", "rgb(76,110,219)", "rgb(96,84,200)"],
+      c = {
+        text: "",
+        prefixP: -s,
+        skillI: 0,
+        skillP: 0,
+        direction: "forward",
+        delay: a,
+        step: g
+      };
+      i()
+      };
+      binft(document.getElementById('binft'));
+  </script></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element">
+    
+  </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/hehysh" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;hehysh" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:work@hehysh.eu.org" title="E-Mail → mailto:work@hehysh.eu.org" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      传送门
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://hehysh.github.io/catch-the-cat/" title="https:&#x2F;&#x2F;hehysh.github.io&#x2F;catch-the-cat&#x2F;" rel="noopener" target="_blank">抓猫小游戏</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://wangzhi.hehysh.workers.dev/" title="https:&#x2F;&#x2F;wangzhi.hehysh.workers.dev&#x2F;" rel="noopener" target="_blank">亲爱的总站</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十贰的小窝</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">117k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:46</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'hehysh@163.com';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
+
+
+
+
+
+
+
+
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://example.com/posts/34883.html',]
+      });
+      });
+  </script>
+
+</body>
+</html>
